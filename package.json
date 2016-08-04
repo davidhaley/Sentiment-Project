@@ -1,0 +1,22 @@
+{
+  "name": "sentiment-project",
+  "version": "1.0.0",
+  "description": "A sentiment project using Natural Language Processing.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidhaley/sentiment-project.git"
+  },
+  "author": "david, shino, lina",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidhaley/sentiment-project/issues"
+  },
+  "homepage": "https://github.com/davidhaley/sentiment-project#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
