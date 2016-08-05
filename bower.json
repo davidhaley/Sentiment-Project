@@ -1,9 +1,23 @@
 {
   "name": "sentiment-project",
-  "version": "0.0.1",
+  "description": "A sentiment project using Natural Language Processing.",
+  "main": "app.js",
+  "authors": [
+    "david",
+    "shino",
+    "lina"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/davidhaley/sentiment-project",
+  "private": true,
   "ignore": [
     "**/.*",
     "node_modules",
-    "components"
-  ]
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
 }

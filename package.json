@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/davidhaley/sentiment-project#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "express": "^4.14.0",
+    "twitter-node-client": "0.0.6"
   }
 }
