@@ -1,0 +1,13 @@
+<% include header %>
+
+<main role="main">
+  <div class="container">
+    <% twitter.statuses.forEach(function(tweet){ %>
+      <h3>
+        <%= tweet.text %>
+      </h3>
+    <% }); %>
+  </main>
+</div>
+
+<% include footer %>

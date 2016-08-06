@@ -1,0 +1,23 @@
+{
+  "name": "sentiment-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/davidhaley/sentiment-project.git"
+  },
+  "author": "David Haley, Shino Tan, Lina Kim",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/davidhaley/sentiment-project/issues"
+  },
+  "homepage": "https://github.com/davidhaley/sentiment-project#readme",
+  "dependencies": {
+    "ejs": "^2.5.1",
+    "express": "^4.14.0"
+  }
+}
