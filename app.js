@@ -9,7 +9,7 @@ var app = express();
 app.use('/public', express.static(__dirname + '/public'));
 
 // Add local variables that can be used in views and throughout the app by passing an object to app.locals():
-app.locals.title = 'Sentient';
+app.locals.title = 'Sentiment';
 
 // Load tweets from the json file before responding to routes.
 app.all('*', function(req, res, next){
