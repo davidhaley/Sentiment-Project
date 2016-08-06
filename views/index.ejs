@@ -2,13 +2,12 @@
 
 <main role="main">
   <div class="container">
-    <% twitter.statuses.forEach(function(tweet){ %>
+    <% contentArray.forEach(function(tweet){ %>
       <h3>
-        <%= tweet.text %>
+        <%= tweet %>
       </h3>
     <% }); %>
     <br>
-    <%= sentiment %>
   </main>
 </div>
 
