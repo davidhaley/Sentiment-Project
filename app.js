@@ -8,7 +8,6 @@ var app = express();
 const apiConfig = require('./api');
 const config = apiConfig.twitterConfig;
 const Twitter = require("twitter-node-client").Twitter;
-
 var twitter = new Twitter(config);
 
 // Set up the app to serve files in the public folder.
@@ -18,13 +17,8 @@ app.use('/public', express.static(__dirname + '/public'));
 app.locals.title = 'Sentiment';
 
 // Load tweets from the json file before responding to routes.
-// Send each tweet to NLP API, store sentiment, return total sentiment
 app.all('*', function(req, res, next){
-  // fs.readFile('twitter.json', function(err, data){
-  //   res.locals.twitter = JSON.parse(data);
-  // });
   next();
-
 
   // unirest.get("https://twinword-sentiment-analysis.p.mashape.com/analyze/?text=great+value+in+its+price+range!")
   //   .header("X-Mashape-Key", "kWBJRsZrjmmshQnhz4Fta1chiRRxp1rhKxgjsnUGdwGKSkVFbG")
