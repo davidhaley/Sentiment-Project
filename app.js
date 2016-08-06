@@ -6,7 +6,7 @@ var unirest = require('unirest');
 var fs = require('fs');
 var app = express();
 
-// Set up the app to serve whatever is in the public folder.
+// Set up the app to serve files in the public folder.
 app.use('/public', express.static(__dirname + '/public'));
 
 // Add local variables that can be used in views and throughout the app by passing an object to app.locals():
@@ -24,14 +24,9 @@ app.all('*', function(req, res, next){
     .end(function (result) {
       // res.locals.status = result.status;
       // res.locals.headers = result.headers;
-      res.locals.sentiment = result.raw_body;
+      res.locals.sentiment = result.body.type;
       next();
     });
-
-  // fs.readFile('twinwords.json', function(err, data){
-  //   res.locals.sentiment = JSON.parse(data);
-  //   next();
-  // });
 });
 
 // When a browser requests the root url, respond with the index.ejs file.
