@@ -1,14 +1,18 @@
 <% include header %>
 
 <main role="main">
-  <div class="container">
-    <% twitter.statuses.forEach(function(tweet){ %>
+  <div class="tweets">
+    <% contentArray.forEach(function(tweet) { %>
+      <h3><a href="https://www.twitter.com/<%= tweet.user.screen_name %>/status/<%= tweet.id_str %>"</a></h3>
       <h3>
         <%= tweet.text %>
+        <%= sentiment %>
+        <% tweet.entities.hashtags.forEach(function(hashtag) { %>
+          #<%= hashtag.text %>
+        <% }); %>
       </h3>
     <% }); %>
     <br>
-    <%= sentiment %>
   </main>
 </div>
 
