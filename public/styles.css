@@ -17,12 +17,12 @@ a:hover {
   color: #2F3440;
 }
 
-.container {
-  width: 90%;
+.tweets {
+  width: 50%;
   margin: 0px auto;
 }
 
-footer {
+#footer {
   margin-top: 30px;
   border-top: 1px solid #efefef;
   padding-top: 20px;
