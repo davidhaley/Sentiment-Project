@@ -9,6 +9,7 @@ const apiConfig = require('./api');
 const config = apiConfig.twitterConfig;
 const Twitter = require("twitter-node-client").Twitter;
 var twitter = new Twitter(config);
+module.exports = twitter;
 
 // Set up the app to serve files in the public folder.
 app.use('/public', express.static(__dirname + '/public'));
@@ -33,15 +34,7 @@ app.all('*', function(req, res, next){
 
 // When a browser requests the root url, respond with the index.ejs file.
 app.get('/', function(req, res){
-
-  // Search twitter for tweets matching search words
-  twitter.getSearch({"q":" movie -scary :)", "count": 10, "result\_type":"popular"}, function() {}, function(response) {
-    var contentArray = [];
-    JSON.parse(response).statuses.forEach(function(tweet) {
-      contentArray.push(tweet.text);
-    });
-    res.render("index.ejs", {contentArray: contentArray});
-  });
+  res.render('index.ejs');
 });
 
 app.listen(3000);
