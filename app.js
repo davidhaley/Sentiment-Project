@@ -10,6 +10,7 @@ const apiConfig = require('./api');
 const config = apiConfig.twitterConfig;
 const Twitter = require("twitter-node-client").Twitter;
 const twitter = new Twitter(config);
+var async = require('async');
 
 // Set up the app to serve files in the public folder.
 app.use('/public', express.static(__dirname + '/public'));
@@ -17,31 +18,68 @@ app.use('/public', express.static(__dirname + '/public'));
 // Add local variables that can be used in views and throughout the app.
 app.locals.title = 'Sentiment';
 
-// Load tweets from the json file before responding to routes.
+// App will perform any functions here before responding to routes.
 app.all('*', function(req, res, next){
   next();
-
-  // unirest.get("https://twinword-sentiment-analysis.p.mashape.com/analyze/?text=great+value+in+its+price+range!")
-  //   .header("X-Mashape-Key", "kWBJRsZrjmmshQnhz4Fta1chiRRxp1rhKxgjsnUGdwGKSkVFbG")
-  //   .header("Accept", "application/json")
-  //   .end(function (result) {
-  //     // res.locals.status = result.status;
-  //     // res.locals.headers = result.headers;
-  //     res.locals.sentiment = result.body.type;
-  //     next();
-  //   });
 });
 
-// When a browser requests the root url, respond with the index.ejs file.
+// When a browser requests the root url, request tweet, send to NPL, and display on index page.
 app.get('/', function(req, res){
 
-  // Search twitter for tweets matching search words
-  twitter.getSearch({"q":"tesla", "lang":"en", "count": 10, "result\_type":"popular"}, function() {}, function(response) {
-    var contentArray = [];
-    JSON.parse(response).statuses.forEach(function(tweet) {
-      contentArray.push(tweet);
-    });
-  res.render('index.ejs', {contentArray: contentArray});
+  async.waterfall([
+    // Retrieve tweets from Twitter, return array of tweets on success, or print error on failure.
+    function getTweets(callback) {
+      var error = function (err, response, body) {
+        if (err) {
+          console.log('ERROR [%s]', err);
+          callback(err, null);
+          return;
+        }
+      };
+      var success = function(data) {
+        var contentArray = [];
+        JSON.parse(data).statuses.forEach(function(tweet) {
+          contentArray.push(tweet);
+        });
+        callback(null, contentArray);
+      };
+
+      twitter.getSearch({"q":"tesla", "lang":"en", "count": 1, "result\_type":"popular"}, error, success);
+    },
+    
+    // Send array of tweets to NLP API to be evaluated, return 'positive/negative' sentiment on success, or print error on failure.
+    function getSentiment(contentArray, callback) {
+      contentArray.forEach(function(tweet) {
+        var text = tweet.text;
+        var query = text.split(" ").join("+").replace("'","");
+        var url = "https://twinword-sentiment-analysis.p.mashape.com/analyze/?text="
+
+      unirest.get(url+query)
+        .header("X-Mashape-Key", "kWBJRsZrjmmshQnhz4Fta1chiRRxp1rhKxgjsnUGdwGKSkVFbG")
+        .header("Accept", "application/json")
+        .end(function (result) {
+          if (result.status == 200) {
+            console.log("Result status 200. Success");
+            var sentiment = result.body.type;
+            res.locals.sentiment = sentiment;
+            callback(null, contentArray);
+            return;
+          } else {
+            console.log("Result status is " + "result.status");
+            res.locals.sentiment = "ERROR"
+            res.locals.status = result.status;
+            return;
+          }
+        });
+      });
+    }
+  ], function(err, result) {
+    if (err) {
+      console.log("ERROR: " + err);
+    } else {
+      console.log("SUCCESS: " + result);
+      res.render('index.ejs', {contentArray: result});
+    }
   });
 });
 
