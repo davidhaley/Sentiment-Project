@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/davidhaley/sentiment-project#readme",
   "dependencies": {
+    "async": "^2.0.1",
     "ejs": "^2.5.1",
     "express": "^4.14.0",
     "nodemon": "^1.10.0"
