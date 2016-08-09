@@ -23,6 +23,10 @@ app.all('*', function(req, res, next){
   next();
 });
 
+app.get('/tweets', function(req, res) {
+  res.render('tweets.ejs');
+});
+
 // When a browser requests the root url, request tweet, send to NPL, and display on index page.
 app.get('/', function(req, res){
 
