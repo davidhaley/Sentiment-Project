@@ -44,12 +44,12 @@ app.get('/', function(req, res){
         callback(null, contentArray);
       };
 
-      twitter.getSearch({"q":"tesla", "lang":"en", "count": 1, "result\_type":"popular"}, error, success);
+      twitter.getSearch({"q":"tesla", "lang":"en", "count": 3, "result\_type":"popular"}, error, success);
     },
     
     // Send array of tweets to NLP API to be evaluated, return 'positive/negative' sentiment on success, or print error on failure.
     function getSentiment(contentArray, callback) {
-      contentArray.forEach(function(tweet) {
+      contentArray.forEach(function(tweet, index) {
         var text = tweet.text;
         var query = text.split(" ").join("+").replace("'","");
         var url = "https://twinword-sentiment-analysis.p.mashape.com/analyze/?text="
@@ -60,9 +60,8 @@ app.get('/', function(req, res){
         .end(function (result) {
           if (result.status == 200) {
             console.log("Result status 200. Success");
-            var sentiment = result.body.type;
-            res.locals.sentiment = sentiment;
-            callback(null, contentArray);
+            contentArray[index].sentiment = result.body.type;
+            contentArray[index].status = result.status
             return;
           } else {
             console.log("Result status is " + "result.status");
@@ -72,6 +71,8 @@ app.get('/', function(req, res){
           }
         });
       });
+      console.log(contentArray);
+      callback(null, contentArray);
     }
   ], function(err, result) {
     if (err) {
