@@ -26,7 +26,7 @@ $(document).ready(function(){
               var div = $('<div>');
               var p = $('<p>');
 
-              $(p).append(sentiment);
+              $(p).append(sentiment[0]);
               $(div).append(p);
               $('.sentiment').append(div);
             });
