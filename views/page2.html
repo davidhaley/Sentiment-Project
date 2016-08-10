@@ -1,0 +1,865 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Sentiment</title>
+		<meta name="description" content="description">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="css/bulma.css">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+		<script src="https://use.fontawesome.com/91a312f53a.js"></script>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+		<script src="typed.js" type="text/javascript"></script>
+		<script src="script.js"></script>
+	</head>
+	
+	<body>
+		<img src="images/bgwallpaper.jpg" id="bg" alt="">
+		<div>
+			<nav class="nav">
+				<div class="nav-left">
+					<a class="nav-item is-brand" href="#">
+						<img src="" alt="Bulma logo}">
+					</a>
+				</div>
+				<div class="nav-center">
+					<a class="nav-item" href="#">
+						<span class="icon">
+							<i class="fa fa-github"></i>
+						</span>
+					</a>
+					<a class="nav-item" href="#">
+						<span class="icon">
+							<i class="fa fa-twitter"></i>
+						</span>
+					</a>
+				</div>
+				<span class="nav-toggle">
+					<span></span>
+					<span></span>
+					<span></span>
+				</span>
+				<div class="nav-right nav-menu">
+					<a class="nav-item" href="#">
+						Home
+					</a>
+					<a class="nav-item" href="#">
+						Documentation
+					</a>
+					<a class="nav-item" href="#">
+						Blog
+					</a>
+					<span class="nav-item">
+						<a class="button" >
+							<span class="icon">
+								<i class="fa fa-twitter"></i>
+							</span>
+							<span>Tweet</span>
+						</a>
+						<a class="button is-primary" href="#">
+							<span class="icon">
+								<i class="fa fa-download"></i>
+							</span>
+							<span>Download</span>
+						</a>
+					</span>
+				</div>
+			</nav>
+		</div>
+		
+		<div class="tweet-container columns">
+			<div class="column is-one-third">
+				<h1>Negative</h1>
+				<ul class="tweets negative">
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+				</ul>
+			</div>
+			<div class="column is-one-third">
+				<h1>Positive</h1>
+				<ul class="tweets positive">
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+					<li class="tweet box">
+						<article class="media">
+							<div class="media-content">
+								<div class="content">
+									<p>
+										<strong>John Smith</strong> <small>@johnsmith</small> <small>31m</small>
+										<br>
+										Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa fringilla egestas. Nullam condimentum luctus turpis.
+									</p>
+								</div>
+								<nav class="level">
+									<div class="level-left">
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-reply"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-retweet"></i></span>
+										</a>
+										<a class="level-item">
+											<span class="icon is-small"><i class="fa fa-heart"></i></span>
+										</a>
+									</div>
+								</nav>
+							</div>
+						</article>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</body>
+</html>

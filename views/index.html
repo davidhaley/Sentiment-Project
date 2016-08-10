@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="x-ua-compatible" content="ie=edge">
+		<title>Sentiment</title>
+		<meta name="description" content="description">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="style.css">
+		<link rel="stylesheet" type="text/css" href="css/bulma.css">
+		<link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+		<script src="typed.js" type="text/javascript"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+		<script src="script.js"></script>
+		<script>
+		$(function(){
+			$(".element").typed({
+				strings: ["^500 Stephen Curry", "Adidas UltraBoosts", "Dyson Vacuums", "Barack Obama", "Try it out!"],
+				typeSpeed: 1.5
+				});
+			});
+		</script>
+	</head>
+	<div class="columns is-mobile" id="landing">
+		<div class="column is-4 is-offset-4">
+			<p id="type">Discover <em>how</em> people <strong>feel</strong> about</p>
+			<div class="type-wrap">
+				
+				<span id="typed" style="white-space:pre;"></span>
+				<div id="input">
+					<span class="element h1"></span>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div>
+		<video autoplay loop id="video-background" muted>
+			<source src="http://res.cloudinary.com/shino/video/upload/v1470512209/sentiment_qav7zh.mp4" type="video/mp4">
+		</video>
+	</div>
+</body>
+</html>

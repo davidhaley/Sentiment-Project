@@ -1,0 +1,83 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  min-width: 100%;
+  min-height: 100%;
+}
+
+
+body, html, .tweet-container, .tweet-container > * , .tweets{
+  height: 100%;
+  position: relative;
+}
+.tweets {
+  overflow-y: scroll;
+}
+
+h1 {
+  font-size: 5em;
+  color: #fff;
+}
+
+#video-background {
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -1;
+}
+
+/* #landing {
+  padding-top: 25em;
+  margin: 0 auto;
+
+ }*/
+
+
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+#type {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.5em;
+
+}
+
+ .element {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5em;
+  display: inline;
+}
+
