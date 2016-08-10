@@ -17,38 +17,100 @@ app.use('/public', express.static(__dirname + '/public'));
 
 // Add local variables that can be used in views and throughout the app.
 app.locals.title = 'Sentiment';
+app.locals.sentimentArray = [];
 
 // App will perform any functions here before responding to routes.
 app.all('*', function(req, res, next){
   next();
 });
 
-app.post('/tweets', function(req, res) {
-  console.log("POSTED!");
-  var error = function (err, response, body) {
-    if (err) {
-      console.log('ERROR [%s]', err);
-      callback(err, null);
-      return;
-    }
-  };
-  var success = function(data) {
-    var contentArray = [];
-    JSON.parse(data).statuses.forEach(function(tweet) {
-      contentArray.push(tweet);
-    });
-
-    app.locals.contentArray = contentArray;
-    res.json(contentArray);
-  };
-  twitter.getSearch({"q":"tesla", "lang":"en", "count": 3, "result\_type":"popular"}, error, success);
-});
-
 app.get('/', function(req, res) {
   res.render('index.ejs');
 });
 
-// When a browser requests the root url, request tweet, send to NPL, and display on index page.
+app.post('/tweets', function(req, res) {
+
+  var sentimentArray = [];
+  var apiDomain = "https://twinword-sentiment-analysis.p.mashape.com/analyze/?text="
+
+  async.waterfall([
+    function(callback) {
+      var error = function (err, response, body) {
+        if (err) {
+          console.log('ERROR [%s]', err);
+          callback(err, null);
+          return;
+        }
+      };
+      var success = function(data) {
+        var contentArray = [];
+        var sentimentQueries = [];
+        JSON.parse(data).statuses.forEach(function(tweet) {
+          var text = tweet.text;
+          var query = text.split(" ").join("+").replace("'","");
+          sentimentQueries.push(query);
+          contentArray.push(tweet);
+        });
+
+        res.json(contentArray);
+        callback(null, sentimentQueries);
+      };
+      twitter.getSearch({"q":"trump", "lang":"en", "count": 20, "result\_type":"popular"}, error, success);
+    },
+    function getSentiment(sentimentQueries, callback) {
+      async.map(sentimentQueries, function(query, callback) {
+        unirest.get(apiDomain+query)
+        .header("X-Mashape-Key", "kWBJRsZrjmmshQnhz4Fta1chiRRxp1rhKxgjsnUGdwGKSkVFbG")
+        .header("Accept", "application/json")
+        .end(function (result) {
+          if (result.status == 200) {
+            console.log("Result status 200. Success");
+            var res = [result.body.type, result.status];
+            callback(null, res);
+            return;
+          } else {
+            console.log("Result status is " + "result.status");
+            var res = [result.body.type, result.status];
+            callback(null, res);
+            return;
+          }
+        });
+        sentimentArray.push(res);
+      }, function(err, results) {
+        // callback(null, results);
+        sentimentArray = results;
+        var test = [ [ 'negative', 200 ],
+          [ 'negative', 200 ],
+          [ 'negative', 200 ],
+          [ 'positive', 200 ],
+          [ 'neutral', 200 ],
+          [ 'negative', 200 ],
+          [ 'neutral', 200 ],
+          [ 'negative', 200 ],
+          [ 'neutral', 200 ],
+          [ 'neutral', 200 ],
+          [ 'positive', 200 ],
+          [ 'neutral', 200 ],
+          [ 'neutral', 200 ],
+          [ 'positive', 200 ],
+          [ 'negative', 200 ] ]
+        console.log(JSON.stringify(test) == JSON.stringify(results));
+      });
+  //   // callback(null, sentimentArray);
+  //   // debugger;
+  //   }
+  // // }
+  // ],
+  // // optional callback
+  // function(err, results) {
+  //   app.locals.sentimentArray = results;
+  //   debugger;
+  // });
+    }
+  ]);
+});
+
+// When a browser requests the root apiDomain, request tweet, send to NPL, and display on index page.
 // app.get('/', function(req, res){
 
 //   async.waterfall([
@@ -58,9 +120,9 @@ app.get('/', function(req, res) {
 //       contentArray.forEach(function(tweet, index) {
 //         var text = tweet.text;
 //         var query = text.split(" ").join("+").replace("'","");
-//         var url = "https://twinword-sentiment-analysis.p.mashape.com/analyze/?text="
+//         var apiDomain = "https://twinword-sentiment-analysis.p.mashape.com/analyze/?text="
 
-//       unirest.get(url+query)
+//       unirest.get(apiDomain+query)
 //         .header("X-Mashape-Key", "kWBJRsZrjmmshQnhz4Fta1chiRRxp1rhKxgjsnUGdwGKSkVFbG")
 //         .header("Accept", "application/json")
 //         .end(function (result) {

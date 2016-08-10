@@ -5,6 +5,13 @@
 <main role="main">
   <div class="tweets">
     <br>
+  <div class="sentiment">
+    <% if (typeof sentimentArray !== undefined) { %>
+      <% sentimentArray.forEach(function(sentiment) { %>
+      <%= sentiment %>
+      <% }); %>
+    <% } %>
+  </div>
   </main>
 </div>
 
