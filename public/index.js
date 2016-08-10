@@ -10,7 +10,7 @@ $(document).ready(function(){
         data.forEach(function(tweet) {
           var div = $('<div>');
           var p = $('<p>');
-          var text = JSON.stringify(tweet.text);
+          var text = tweet.text;
 
           $(p).append(text);
           $(div).append(p);
@@ -22,10 +22,5 @@ $(document).ready(function(){
         console.log(data);
       }
     });
-
-    // contentArray.forEach(function(tweet) {
-    //   console.log(tweet);
-    //   var div = $('.tweets').append(tweet);
-    // });
   });
 });
