@@ -53,7 +53,7 @@ app.post('/tweets', function(req, res) {
         res.json(contentArray);
         // callback(null, sentimentQueries);
       };
-      twitter.getSearch({"q":"trump", "lang":"en", "count": 3, "result\_type":"popular"}, error, success);
+      twitter.getSearch({"q":"trump", "lang":"en", "count": 5, "result\_type":"popular"}, error, success);
     }
     getTweets();
 });
