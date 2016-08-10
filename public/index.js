@@ -1,19 +1,46 @@
-$(document).ready(function() {
-  $("#load-tweets").on('click', function() {
-    console.log("The button has been clicked!");
+"use strict";
+
+$(document).ready(function(){
+  $("#load-tweets").on('click', function(callback) {
+    console.log("button has been clicked!");
+    $.ajax({
+      type: "POST",
+      url: '  /tweets',
+      dataType: 'JSON',
+      success: function(data) {
+        data.forEach(function(tweet) {
+          var div = $('<div>');
+          var p = $('<p>');
+          var text = tweet.text;
+
+          $(p).append(text);
+          $(div).append(p);
+          $('.tweets').append(div);
+        });
+        $.ajax({
+          type: "GET",
+          url: '  /sentiment',
+          dataType: 'JSON',
+          success: function(data) {
+            data.forEach(function(sentiment) {
+              var div = $('<div>');
+              var p = $('<p>');
+
+              $(p).append(sentiment[0]);
+              $(div).append(p);
+              $('.sentiment').append(div);
+            });
+          },
+          error: function(data) {
+            console.log("error");
+            console.log(data);
+          }
+      });
+      },
+        error: function(data) {
+          console.log("error");
+          console.log(data);
+        }
+      });
+    });
   });
-});
-
-// // Search twitter for tweets matching search words
-// twitter.getSearch({"q":" movie -scary :)", "count": 10, "result\_type":"popular"}, function() {}, function(response) {
-//   var contentArray = [];
-//   JSON.parse(response).statuses.forEach(function(tweet) {
-//     contentArray.push(tweet.text);
-//   });
-
-//   contentArray = search();
-//   contentArray.forEach(function(tweet) {
-//     var tweets = $("<h3>").append(tweet);
-//     $(".container").append(tweets);
-//   });
-// });
