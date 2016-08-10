@@ -1,19 +1,27 @@
-$(document).ready(function() {
-  $("#load-tweets").on('click', function() {
-    console.log("The button has been clicked!");
+$(document).ready(function(){
+  $("#load-tweets").on('click', function(callback) {
+    console.log("button has been clicked!");
+
+    $.ajax({
+      type: "POST",
+      url: '  /tweets',
+      // // data: String,
+      dataType: 'JSON',
+      success: function(data) {
+        data.forEach(function(tweet) {
+          var div = $('<div>').append(JSON.stringify(tweet.text));
+          $(div).appendTo('.tweets');
+        });
+      },
+      error: function(data) {
+        console.log("error");
+        console.log(data);
+      }
+    });
+
+    // contentArray.forEach(function(tweet) {
+    //   console.log(tweet);
+    //   var div = $('.tweets').append(tweet);
+    // });
   });
 });
-
-// // Search twitter for tweets matching search words
-// twitter.getSearch({"q":" movie -scary :)", "count": 10, "result\_type":"popular"}, function() {}, function(response) {
-//   var contentArray = [];
-//   JSON.parse(response).statuses.forEach(function(tweet) {
-//     contentArray.push(tweet.text);
-//   });
-
-//   contentArray = search();
-//   contentArray.forEach(function(tweet) {
-//     var tweets = $("<h3>").append(tweet);
-//     $(".container").append(tweets);
-//   });
-// });

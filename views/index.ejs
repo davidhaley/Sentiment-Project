@@ -4,16 +4,6 @@
 
 <main role="main">
   <div class="tweets">
-    <% contentArray.forEach(function(tweet) { %>
-      <h3><a href="https://www.twitter.com/<%= tweet.user.screen_name %>/status/<%= tweet.id_str %>"</a></h3>
-      <h3>
-        <%= tweet.text %>
-        <%= tweet.sentiment %>
-        <% tweet.entities.hashtags.forEach(function(hashtag) { %>
-          #<%= hashtag.text %>
-        <% }); %>
-      </h3>
-    <% }); %>
     <br>
   </main>
 </div>
