@@ -5,12 +5,16 @@ $(document).ready(function(){
     $.ajax({
       type: "POST",
       url: '  /tweets',
-      // // data: String,
       dataType: 'JSON',
       success: function(data) {
         data.forEach(function(tweet) {
-          var div = $('<div>').append(JSON.stringify(tweet.text));
-          $(div).appendTo('.tweets');
+          var div = $('<div>');
+          var p = $('<p>');
+          var text = JSON.stringify(tweet.text);
+
+          $(p).append(text);
+          $(div).append(p);
+          $('.tweets').append(div);
         });
       },
       error: function(data) {
