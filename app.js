@@ -17,7 +17,6 @@ app.use('/public', express.static(__dirname + '/public'));
 
 // Add local variables that can be used in views and throughout the app.
 app.locals.title = 'Sentiment';
-app.locals.sentimentArray = [];
 
 // App will perform any functions here before responding to routes.
 app.all('*', function(req, res, next){
@@ -30,33 +29,44 @@ app.get('/', function(req, res) {
 
 app.post('/tweets', function(req, res) {
 
-    function getTweets(callback) {
-      var error = function (err, response, body) {
-        if (err) {
-          console.log('ERROR [%s]', err);
-          callback(err, null);
-          return;
-        }
-      };
-      var success = function(data) {
-        var contentArray = [];
-        var sentimentQueries = [];
+  function getTweets(callback) {
+    var error = function (error, response, body) {
+      if (error) {
+        console.log('ERROR [%s]', error);
+        callback(error, null);
+        return;
+      }
+    };
+    var success = function(data) {
+      var contentArray = [];
+      var sentimentQueries = [];
 
-        JSON.parse(data).statuses.forEach(function(tweet) {
+      JSON.parse(data).statuses.forEach(function(tweet) {
+          // Create object for TwinWord query.
+          var queryObj = {};
+
+          // Make query id equivalent to tweet id.
+          queryObj.id = tweet.id;
+
+          // Build query for TwinWord API
           var text = tweet.text;
           var query = text.split(" ").join("+").replace("'","");
-          sentimentQueries.push(query);
+          
+          // Add API query to query object, to later match with tweet when returned. 
+          queryObj.query = query;
+
+          sentimentQueries.push(queryObj);
           contentArray.push(tweet);
         });
 
-        res.app.locals.sentimentQueries = sentimentQueries;
-        res.json(contentArray);
-        // callback(null, sentimentQueries);
+      res.app.locals.sentimentQueries = sentimentQueries;
+      res.json(contentArray);
       };
-      twitter.getSearch({"q":"trump", "lang":"en", "count": 5, "result\_type":"popular"}, error, success);
+      twitter.getSearch({"q":"tesla model 3", "lang":"en", "count": 20}, error, success);
+      // , "result\_type":"popular"
     }
     getTweets();
-});
+  });
 
 app.get('/sentiment', function(req, res) {
 
@@ -64,30 +74,36 @@ app.get('/sentiment', function(req, res) {
   var sentimentArray = [];
 
   function getSentiment(sentimentQueries, callback) {
-    async.map(sentimentQueries, function(query, callback) {
+    async.mapLimit(sentimentQueries, 10, function(queryObj, callback) {
+      debugger;
+      var query = queryObj.query;
       unirest.get(apiDomain+query)
       .header("X-Mashape-Key", "kWBJRsZrjmmshQnhz4Fta1chiRRxp1rhKxgjsnUGdwGKSkVFbG")
       .header("Accept", "application/json")
       .end(function (result) {
         if (result.status == 200) {
           console.log("Result status 200. Success");
-          var res = [result.body.type, result.status];
-          callback(null, res);
+          var response = [queryObj.id, result.body.type, result.status];
+          // res.app.locals.sentimentArray.push(response)
+          callback(null, response);
           return;
         } else {
-          console.log("Result status is " + "result.status");
-          var res = [result.body.type, result.status];
-          callback(null, res);
+          console.log("Result status is " + result);
+          var error = [queryObj.id, result.error]
+          // res.app.locals.sentimentArray.push(response)
+          callback(error, null);
           return;
         }
       });
-      sentimentArray.push(res);
+      debugger;
     }, function(err, results) {
+      // var results = res.app.locals.sentimentArray;
+      debugger;
       res.json(results);
     });
   };
   getSentiment(res.app.locals.sentimentQueries);
 });
 
-app.listen(3000);
-console.log('app is listening at localhost:3000');
+  app.listen(3000);
+  console.log('app is listening at localhost:3000');
