@@ -14,9 +14,15 @@ $(document).ready(function(){
             var li = $('<li>');
             var text = tweet.text;
             var id = tweet.id_str;
-            $(li).append(text).append(id);
-            var finalTweet = $("<div>").attr('id', id).append(li);
-            $('.tweets-neutral').find(".tweet-box").append(finalTweet);
+            var userName = tweet.user.name;
+            $(".userName").append(userName);
+            var atUser = "@" + tweet.user.screen_name;
+            $(".atUser").append(atUser);
+
+            // var nameItem = $(li).append(name).append(atUser);
+            var textItem = $(li).append(text).append(id);
+            var finalTweet = $("<div>").attr('id', id).append(nameItem).append(textItem);
+            $('.tweetText').append(finalTweet);
 
             // image stuff
             var imageUrl = tweet.user.profile_image_url;
