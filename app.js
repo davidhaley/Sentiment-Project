@@ -46,7 +46,7 @@ app.post('/tweets', function(req, res) {
           var queryObj = {};
 
           // Make query id equivalent to tweet id.
-          queryObj.id = tweet.id;
+          queryObj.id = tweet.id_str;
 
           // Build query for TwinWord API
           var text = tweet.text;
@@ -59,10 +59,13 @@ app.post('/tweets', function(req, res) {
           contentArray.push(tweet);
         });
 
+      // var max_id = lowest id parameter for the next request
+      // number of tweets to request
+      // var count = 120;
       res.app.locals.sentimentQueries = sentimentQueries;
       res.json(contentArray);
       };
-      twitter.getSearch({"q":"tesla model 3", "lang":"en", "count": 20}, error, success);
+      twitter.getSearch({"q":"Tesla", "lang":"en", "count": 5}, error, success);
       // , "result\_type":"popular"
     }
     getTweets();
@@ -74,8 +77,7 @@ app.get('/sentiment', function(req, res) {
   var sentimentArray = [];
 
   function getSentiment(sentimentQueries, callback) {
-    async.mapLimit(sentimentQueries, 10, function(queryObj, callback) {
-      debugger;
+    async.reflect(async.mapLimit(sentimentQueries, 10, function(queryObj, callback) {
       var query = queryObj.query;
       unirest.get(apiDomain+query)
       .header("X-Mashape-Key", "kWBJRsZrjmmshQnhz4Fta1chiRRxp1rhKxgjsnUGdwGKSkVFbG")
@@ -84,23 +86,20 @@ app.get('/sentiment', function(req, res) {
         if (result.status == 200) {
           console.log("Result status 200. Success");
           var response = [queryObj.id, result.body.type, result.status];
-          // res.app.locals.sentimentArray.push(response)
           callback(null, response);
           return;
         } else {
+          debugger;
           console.log("Result status is " + result);
           var error = [queryObj.id, result.error]
-          // res.app.locals.sentimentArray.push(response)
           callback(error, null);
           return;
         }
       });
-      debugger;
     }, function(err, results) {
-      // var results = res.app.locals.sentimentArray;
       debugger;
       res.json(results);
-    });
+    }));
   };
   getSentiment(res.app.locals.sentimentQueries);
 });

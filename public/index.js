@@ -14,7 +14,7 @@ $(document).ready(function(){
             var div = $('<div>');
             var p = $('<p>');
             var text = tweet.text;
-            var id = tweet.id;
+            var id = tweet.id_str;
 
             $(p).append(text).append(id);
             $(div).attr('id', id).append(p);
