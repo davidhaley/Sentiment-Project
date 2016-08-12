@@ -65,7 +65,7 @@ app.post('/tweets', function(req, res) {
       res.app.locals.sentimentQueries = sentimentQueries;
       res.json(contentArray);
       };
-      twitter.getSearch({"q":"Tesla", "lang":"en", "count": 5}, error, success);
+      twitter.getSearch({"q":"Tesla", "lang":"en", "count": 1}, error, success);
       // , "result\_type":"popular"
     }
     getTweets();

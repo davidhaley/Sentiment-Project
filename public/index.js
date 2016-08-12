@@ -11,14 +11,21 @@ $(document).ready(function(){
         dataType: 'JSON',
         success: function(data) {
           data.forEach(function(tweet) {
-            var div = $('<div>');
             var p = $('<p>');
             var text = tweet.text;
             var id = tweet.id_str;
-
             $(p).append(text).append(id);
-            $(div).attr('id', id).append(p);
-            $('.tweets').append(div);
+            var finalTweet = $("<div>").attr('id', id).append(p);
+            $('#tweets-neutral').append(finalTweet);
+
+            // image stuff
+            var imageUrl = tweet.user.profile_image_url;
+            var userImg = $('<img>').attr("src", imageUrl);
+            var media = $('<div>').addClass("media-left");
+            var figure = $("<figure>").addClass("image").addClass("is-64x64").append(userImg);
+            var mediaLeft = $(media).append(figure);
+
+            $('#tweets-neutral').append(mediaLeft);
           });
           $.ajax({
             type: "GET",
@@ -36,7 +43,7 @@ $(document).ready(function(){
                   var id = sentiment[0];
                   var text = $(p).append(sentiment[1]);
                   $(div).append(text).append(id);
-                  $('.tweets').children("#" + id).append(div);               
+                  $('#tweets-neutral').children("#" + id).append(div);               
                 }
               });
             },
