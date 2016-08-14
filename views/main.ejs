@@ -1,22 +1,10 @@
-<input type="search" id="load-tweets">
+<% include header %>
+
 <main role="main">
-	<div class="tweet-container columns">
-		<div class="column is-one-quarter">
-			<ul class="tweets-neutral">
-				<li class=tweet-box">
-					<article class="media">
-						<div class="media-content">
-							<div class="content">
-								<p>
-									<strong class="userName"></strong> <small class="atUser"></small> <small>31m</small>
-									<br>
-									<p class="tweetText"></p>
-								</p>
-							</div>
-						</div>
-					</article>
-				</li>
-			</ul>
-		</div>
-	</div>
+
+  <% include nav %>
+  <% include tweets %>
+
 </main>
+
+<% include footer %>
