@@ -62,15 +62,18 @@ $(document).ready(function(){
                   var sentimentText = sentiment[1];
                   var sentimentResult = $('<div>').append(sentimentText).append(sentimentId);
                   var matchingTweet = $('.tweets-neutral').children('#' + sentimentId);
-                  // $(matchingTweet).find('.avatar-container').addClass('neutral');
                   $(matchingTweet).find('.media-content').append(sentimentResult);               
 
                   if (sentimentText === 'positive') {
                     $(matchingTweet).find('.avatar-container').removeClass('neutral').addClass('positive');
                     $(matchingTweet).find('.media-content').append(sentimentResult);
+                    var element = $(matchingTweet).detach();
+                    $('.tweets-positive').append(element);
                   } else if (sentimentText === 'negative') {
                     $(matchingTweet).find('.avatar-container').removeClass('neutral').addClass('negative');
                     $(matchingTweet).find('.media-content').append(sentimentResult);
+                    var element = $(matchingTweet).detach();
+                    $('.tweets-negative').append(element);
                   }
                 }
               });
@@ -80,7 +83,7 @@ $(document).ready(function(){
               console.log('error');
               console.log(data);
             }
-        });
+          });
         },
           error: function(data) {
             debugger;
