@@ -27,7 +27,7 @@ app.get('/', function(req, res) {
   res.render('index.ejs');
 });
 
-app.post('/tweets', function(req, res) {
+app.post('/search', function(req, res) {
 
   function getTweets(callback) {
     var error = function (error, response, body) {
@@ -63,9 +63,11 @@ app.post('/tweets', function(req, res) {
       // number of tweets to request
       // var count = 120;
       res.app.locals.sentimentQueries = sentimentQueries;
-      res.json(contentArray);
+      res.app.locals.contentArray = contentArray;
+      res.redirect('/tweets.ejs')
+      // res.json(contentArray);
       };
-      twitter.getSearch({"q":"Tesla", "lang":"en", "count": 1}, error, success);
+      twitter.getSearch({"q":"Tesla", "lang":"en", "count": 5}, error, success);
       // , "result\_type":"popular"
     }
     getTweets();
