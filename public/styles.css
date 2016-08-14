@@ -1,4 +1,4 @@
-body {
+/*body {
   font: 16px/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif;
   color: #787876;
 }
@@ -34,3 +34,176 @@ a:hover {
     width: 55 %;
   }
 }
+*/
+
+body {
+  margin: 0;
+  padding: 0;
+  background-attachment: fixed;
+  background-size: cover;
+  font-family: "Montserrat";
+}
+
+#bg {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  min-width: 100%;
+  min-height: 100%;
+}
+
+#input {
+  border: 1px solid;
+  color: #fff;
+  border-width: 0 0 1px 0;
+  padding: 0.5em 1em;
+  font-size: 2.3em;
+  background: url(https://remoteok.io/assets/search-white.png) no-repeat transparent;
+  background-position: 0% 50%;
+  background-size: 1em;
+}
+
+#input:focus {
+  border-bottom-color: blue;
+}
+
+.nav {
+  color: #4B5267;
+  padding-top: 10px;
+}
+
+#sidebar{
+  background:#151718;
+  width:200px;
+  height:7%;
+  display:block;
+  position:absolute;
+  right:-200px;
+  top:0px;
+  transition:right 0.3s linear;
+}
+
+#sidebar.visible{
+  right:0px;
+  transition:right 0.3s linear;
+}
+
+ul{
+  margin:0px;
+  padding:0px;
+}
+
+ul li{
+  list-style:none;
+}
+
+ul li a{
+  background: #151718;
+  color: #fff;
+  border-bottom:1px solid #111;
+  display:block;
+  width:200px;
+  padding:10px;
+  text-align: center;
+  text-decoration: none;
+
+}
+
+#sidebar-btn {
+  display:inline-block;
+  vertical-align: middle;
+  width:20px;
+  height:15px;
+  cursor:pointer;
+  margin:20px;
+  position:absolute;
+  top:0px;
+  left:-60px;
+}
+
+#sidebar-btn span{
+  height:2px;
+  background: white;
+  margin-bottom:5px;
+  display:block;
+}
+
+#sidebar-btn span:nth-child(3){
+  width:75%;
+}
+
+#sidebar-btn span:nth-child(2){
+  width:50%;
+}
+
+body, html, .tweet-container, .tweet-container > * , .tweets{
+  height: 100%;
+  position: relative;
+}
+.tweets {
+  overflow-y: auto;
+}
+
+#title {
+  font-size: 2em;
+  font-family: Montserrat;
+  color: #fff;
+  text-align: center;
+  padding-left: 0.5em;
+}
+
+#video-background {
+  position: fixed;
+  right: 0; 
+  bottom: 0;
+  min-width: 100%; 
+  min-height: 100%;
+  width: auto; 
+  height: auto;
+  z-index: -1;
+}
+
+ #landing {
+  padding-top: 25em;
+  margin: 0 auto;
+}
+
+
+.typed-cursor{
+    opacity: 1;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+@keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-webkit-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+@-moz-keyframes blink{
+    0% { opacity:1; }
+    50% { opacity:0; }
+    100% { opacity:1; }
+}
+
+#type {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 3.5em;
+
+}
+
+ .element {
+  color: white;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5em;
+  display: inline;
+}
+
+
+
