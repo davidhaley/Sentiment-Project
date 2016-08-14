@@ -218,12 +218,6 @@ display: inline;
   transform: translateY(-50%) translateX(10%);
 }
 
-.avatar-container .neutral {
-  background-color: gray;
-  margin: 3px;
-  border-radius: 5px;
-}
-
 .avatar-container {
   margin: 3px;
   border-radius: 5px;
@@ -251,4 +245,13 @@ display: inline;
 
 .tweets-neutral {
   background-color: white;
+}
+
+.column .is-one-quarter {
+  width: 600px;
+}
+
+.tweets-neutral, .tweets-positive, .tweets-negative {
+  float: left;
+  display: inline-block;
 }
