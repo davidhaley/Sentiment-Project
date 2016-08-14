@@ -39,9 +39,10 @@ a:hover {
 body {
   margin: 0;
   padding: 0;
-  background-attachment: fixed;
-  background-size: cover;
   font-family: "Montserrat";
+  background: url("http://res.cloudinary.com/shino/image/upload/v1471126188/bgwallpaper_tuuxtf.jpg") no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 #bg {
@@ -198,12 +199,56 @@ body, html, .tweet-container, .tweet-container > * , .tweets{
 
 }
 
- .element {
-  color: white;
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.5em;
-  display: inline;
+.element {
+color: white;
+font-family: 'Montserrat', sans-serif;
+font-size: 2.5em;
+display: inline;
 }
 
+.avatar {
+  float: left;
+  width: 48px;
+  height: 48px;
+  border-radius: 5px;
+  margin-top: 3px;
+  padding-top: 3px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%) translateX(10%);
+}
 
+.avatar-container .neutral {
+  background-color: gray;
+  margin: 3px;
+  border-radius: 5px;
+}
 
+.avatar-container {
+  margin: 3px;
+  border-radius: 5px;
+}
+
+.neutral {
+  background-color: gray;
+}
+
+.positive {
+  background-color: green;
+}
+
+.negative {
+  background-color: red;
+}
+
+.tweet-container columns {
+  padding: 9px 12px;
+}
+
+.tweet-box {
+  margin: 10px;
+}
+
+.tweets-neutral {
+  background-color: white;
+}

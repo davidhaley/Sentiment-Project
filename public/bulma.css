@@ -2072,8 +2072,8 @@ a.box:active {
 .image img {
   display: block;
   height: auto;
-  width: 100%;
-}
+/*  width: 100%;
+*/}
 
 .image.is-square img, .image.is-1by1 img, .image.is-4by3 img, .image.is-3by2 img, .image.is-16by9 img, .image.is-2by1 img {
   bottom: 0;
