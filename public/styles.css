@@ -243,7 +243,7 @@ display: inline;
   margin: 10px;
 }
 
-.tweets-neutral {
+.tweets-neutral, .tweets-negative, .tweets-positive {
   background-color: white;
 }
 
