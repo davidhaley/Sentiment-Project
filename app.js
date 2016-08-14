@@ -19,15 +19,17 @@ app.use('/public', express.static(__dirname + '/public'));
 app.locals.title = 'Sentiment';
 
 // App will perform any functions here before responding to routes.
-app.all('*', function(req, res, next){
-  next();
-});
+// app.all('*', function(req, res, next){
+//   next();
+// });
+
+app.set('view engine', 'ejs');
 
 app.get('/', function(req, res) {
-  res.render('index.ejs');
+  res.render('main.ejs');
 });
 
-app.post('/search', function(req, res) {
+app.post('/tweets', function(req, res) {
 
   function getTweets(callback) {
     var error = function (error, response, body) {
@@ -63,15 +65,13 @@ app.post('/search', function(req, res) {
       // number of tweets to request
       // var count = 120;
       res.app.locals.sentimentQueries = sentimentQueries;
-      res.app.locals.contentArray = contentArray;
-      res.redirect('/tweets.ejs')
-      // res.json(contentArray);
-      };
-      twitter.getSearch({"q":"Tesla", "lang":"en", "count": 5}, error, success);
+      res.json(contentArray);
+    };
+      twitter.getSearch({"q":"Olympics", "lang":"en", "count": 10}, error, success);
       // , "result\_type":"popular"
-    }
+  }
     getTweets();
-  });
+});
 
 app.get('/sentiment', function(req, res) {
 
@@ -91,7 +91,6 @@ app.get('/sentiment', function(req, res) {
           callback(null, response);
           return;
         } else {
-          debugger;
           console.log("Result status is " + result);
           var error = [queryObj.id, result.error]
           callback(error, null);
@@ -99,7 +98,6 @@ app.get('/sentiment', function(req, res) {
         }
       });
     }, function(err, results) {
-      debugger;
       res.json(results);
     }));
   };
