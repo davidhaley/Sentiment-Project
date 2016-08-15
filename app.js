@@ -86,7 +86,7 @@ app.post('/tweets', function(req, res) {
       res.app.locals.sentimentQueries = sentimentQueries;
       res.json(contentArray);
     };
-      twitter.getSearch({"q":"SpaceX", "lang":"en", "count": 15}, error, success);
+      twitter.getSearch({"q":"Olympics", "lang":"en", "count": 5}, error, success);
       // , "result\_type":"popular"
   }
     getTweets();
