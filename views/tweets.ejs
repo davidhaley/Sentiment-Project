@@ -14,38 +14,87 @@
       </ul>
     </div>
     <div class="column is-one-quarter">
-      <ul class="charts">
+      <div class="charts">
         <div class="ct-chart ct-series-a ct-bar ct-minor-third" id="bar-chart">
-      </ul>
+      </div>
+      <div class="ct-chart ct-series-a ct-line ct-minor-third" id="line-chart">
+      </div>
     </div>
   </div>
-    <script>              
-    var data = {
-    labels: ["Positive", "Neutral", "Negative"],
-    series: [
-      [0, 0, 0]
-    ]
-    };
-    var options = {
-    seriesBarDistance: 15,
-    };
-    var responsiveOptions = [
-    ['screen and (min-width: 641px) and (max-width: 1024px)', {
-    seriesBarDistance: 10,
-    axisX: {
+    <script> 
+
+// Bar chart
+
+var data = {
+  labels: ["Positive", "Neutral", "Negative"],
+  series: [
+    [0, 0, 0]
+  ]
+};
+var barChartOptions = {
+  seriesBarDistance: 15,
+  axisY: {
+    onlyInteger: true
+  }
+};
+var responsiveOptions = [
+  ['screen and (min-width: 641px) and (max-width: 1024px)', {
+  seriesBarDistance: 10,
+  axisX: {
     labelInterpolationFnc: function(value) {
     return value;
     }
-    }
-    }],
-    ['screen and (max-width: 640px)', {
-    seriesBarDistance: 5,
-    axisX: {
+  }
+}],
+  ['screen and (max-width: 640px)', {
+  seriesBarDistance: 5,
+  axisX: {
     labelInterpolationFnc: function(value) {
     return value[0];
     }
+  }
+}]
+];
+new Chartist.Bar('#bar-chart', data, barChartOptions, responsiveOptions);
+
+
+// Line chart
+
+var data = {
+  // Dates
+  labels: [],
+  // Sentiment
+  series: [
+    // Postive
+    [],
+    // Neutral
+    [],
+    // Negative
+    []
+  ]
+};
+
+var lineChartOptions = {
+  fullWidth: true,
+  chartPadding: {
+    right: 10
+  },
+  lineSmooth: Chartist.Interpolation.cardinal({
+    fillHoles: true,
+  }),
+  low: 0,
+  axisY: {
+    minimum: -1,
+    maximum: 1,
+    onlyInteger: false,
+    referenceValue: 1,
+    labelInterpolationFnc: function (value) {
+      return Math.floor(value * 100) / 100;
     }
-    }]
-    ];
-    new Chartist.Bar('#bar-chart', data, options, responsiveOptions);</script></div>
+  }
+};
+
+new Chartist.Line('#line-chart', data, lineChartOptions, responsiveOptions);
+
+</script></div>
 </div>
