@@ -90,21 +90,36 @@ $(document).ready(function() {
                 }
               });
 
-              // if tweet container is empty, remove class is-one-quarter
-              // if one is missing, change to is-half
-              // if two are missing, change to 
-
-              // New data to update the bar chart
-              var data = {
+              // New data to update bar chart
+              var barChartData = {
               labels: ["Positive", "Neutral", "Negative"],
               series: [
                 chartData
               ]
               };
 
+              // New data to update line chart
+              var lineChartData = {
+                // Dates
+                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                // Sentiment
+                series: [
+                  // Postive
+                  [5, 5, 10, 8, 7, 5, 4, null, null, null, 10, 10, 7, 8, 6, 9],
+                  // Neutral
+                  [10, 15, null, 12, null, 10, 12, 15, null, null, 12, null, 14, null, null, null],
+                  // Negative
+                  [null, null, null, null, 3, 4, 1, 3, 4,  6,  7,  9, 5, null, null, null]
+                ]
+              };              
+
               // Update bar chart
-              var mychart = $('#bar-chart');
-              mychart.get(0).__chartist__.update(data);
+              var barChart = $('#bar-chart');
+              barChart.get(0).__chartist__.update(barChartData);
+
+              // Update line chart
+              var lineChart = $('#line-chart');
+              lineChart.get(0).__chartist__.update(lineChartData);
 
             },
             error: function(data) {

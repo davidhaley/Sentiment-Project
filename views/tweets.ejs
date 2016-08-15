@@ -17,11 +17,14 @@
       <div class="charts">
         <div class="ct-chart ct-series-a ct-bar ct-minor-third" id="bar-chart">
       </div>
-      <div class="ct-chart ct-series-a ct-line ct-minor-third" id="bar-chart">
+      <div class="ct-chart ct-series-a ct-line ct-minor-third" id="line-chart">
       </div>
     </div>
   </div>
-    <script>              
+    <script> 
+
+// Bar chart
+
 var data = {
   labels: ["Positive", "Neutral", "Negative"],
   series: [
@@ -55,7 +58,37 @@ var responsiveOptions = [
 new Chartist.Bar('#bar-chart', data, options, responsiveOptions);
 
 
+// Line chart
 
+var data = {
+  // Dates
+  labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+  // Sentiment
+  series: [
+    // Postive
+    [0, 0, 0, 0, 0, 0, 0, null, null, null, 0, 0, 0, 0, 0, 0],
+    // Neutral
+    [0, 0, 0, 0, 0, 0, 0, null, null, null, 0, 0, 0, 0, 0, 0],
+    // Negative
+    [0, 0, 0, 0, 0, 0, 0, null, null, null, 0, 0, 0, 0, 0, 0]
+  ]
+};
+
+var options = {
+  fullWidth: true,
+  chartPadding: {
+    right: 10
+  },
+  lineSmooth: Chartist.Interpolation.cardinal({
+    fillHoles: true,
+  }),
+  low: 0,
+  axisY: {
+    onlyInteger: true
+  }
+};
+
+new Chartist.Line('#line-chart', data, options, responsiveOptions);
 
 </script></div>
 </div>
