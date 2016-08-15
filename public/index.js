@@ -84,7 +84,7 @@ $(document).ready(function() {
                     $(matchingTweet).find('.avatar-container').removeClass('neutral').addClass('negative');
                     $(matchingTweet).find('.media-content').append(sentimentResult);
                     var element = $(matchingTweet).detach();
-                    $('.tweets-negative').append(element);
+                    $('.tweets-negative').append(element).append('<hr>');
                   }
                 }
               });
