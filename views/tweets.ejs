@@ -31,7 +31,7 @@ var data = {
     [0, 0, 0]
   ]
 };
-var options = {
+var barChartOptions = {
   seriesBarDistance: 15,
   axisY: {
     onlyInteger: true
@@ -55,7 +55,7 @@ var responsiveOptions = [
   }
 }]
 ];
-new Chartist.Bar('#bar-chart', data, options, responsiveOptions);
+new Chartist.Bar('#bar-chart', data, barChartOptions, responsiveOptions);
 
 
 // Line chart
@@ -66,15 +66,15 @@ var data = {
   // Sentiment
   series: [
     // Postive
-    [0, 0, 0, 0, 0, 0, 0, null, null, null, 0, 0, 0, 0, 0, 0],
+    [],
     // Neutral
-    [0, 0, 0, 0, 0, 0, 0, null, null, null, 0, 0, 0, 0, 0, 0],
+    [],
     // Negative
-    [0, 0, 0, 0, 0, 0, 0, null, null, null, 0, 0, 0, 0, 0, 0]
+    []
   ]
 };
 
-var options = {
+var lineChartOptions = {
   fullWidth: true,
   chartPadding: {
     right: 10
@@ -84,11 +84,17 @@ var options = {
   }),
   low: 0,
   axisY: {
-    onlyInteger: true
+    minimum: -1,
+    maximum: 1,
+    onlyInteger: false,
+    referenceValue: 1,
+    labelInterpolationFnc: function (value) {
+      return Math.floor(value * 100) / 100;
+    }
   }
 };
 
-new Chartist.Line('#line-chart', data, options, responsiveOptions);
+new Chartist.Line('#line-chart', data, lineChartOptions, responsiveOptions);
 
 </script></div>
 </div>

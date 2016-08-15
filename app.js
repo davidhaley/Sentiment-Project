@@ -47,9 +47,6 @@ app.post('/tweets', function(req, res) {
           // Create query object for TwinWord.
           var queryObj = {};
 
-          // Create date object for chart
-          // var date = {};
-
           // Make query id and tweet id equivalent to match them in the client.
           queryObj.id = tweet.id_str;
 
@@ -60,9 +57,8 @@ app.post('/tweets', function(req, res) {
           // Add API query to query object, to later match with tweet when returned. 
           queryObj.query = query;
 
-          // Save dates to find min/max date for chart
-          // date.id = tweet.id_str;
-          // date.date = tweet.created_at
+          // Add tweet date to query object for line chart on client
+          queryObj.tweetDate = tweet.created_at;
 
           sentimentQueries.push(queryObj);
           contentArray.push(tweet);
@@ -106,7 +102,7 @@ app.get('/sentiment', function(req, res) {
       .end(function (result) {
         if (result.status == 200) {
           console.log("Result status 200. Success");
-          var response = [queryObj.id, result.body.type, result.status, result.body.score];
+          var response = [queryObj.id, result.body.type, result.status, result.body.score, queryObj.tweetDate];
           callback(null, response);
           return;
         } else {
