@@ -40,7 +40,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Montserrat";
-  background: url("http://res.cloudinary.com/shino/image/upload/v1471126188/bgwallpaper_tuuxtf.jpg") no-repeat center center fixed;
+/*  background: url("http://res.cloudinary.com/shino/image/upload/v1471126188/bgwallpaper_tuuxtf.jpg") no-repeat center center fixed;
+*/  background-color: gray;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -254,4 +255,31 @@ display: inline;
 .tweets-neutral, .tweets-positive, .tweets-negative {
   float: left;
   display: inline-block;
+}
+
+.ct-series-a .ct-bar {
+  /* Colour of your bars */
+  stroke: red;
+  /* The width of your bars */
+  stroke-width: 10px;
+  /* Yes! Dashed bars! */
+/*  stroke-dasharray: 20px;
+*/  /* Maybe you like round corners on your bars? */
+  stroke-linecap: round;
+}
+
+.ct-chart .ct-bar:nth-of-type(3n+1) {
+  stroke: #EFB200;
+}
+
+.ct-chart .ct-bar:nth-of-type(3n+2) {
+  stroke: #71A28A;
+}
+
+.ct-chart .ct-bar:nth-of-type(3n+3) {
+  stroke: #FF6414;
+}
+
+.ct-chart .ct-bar:nth-of-type(4n+4) {
+  stroke: #91A453;
 }
