@@ -2,8 +2,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Montserrat";
-/*  background: url("http://res.cloudinary.com/shino/image/upload/v1471126188/bgwallpaper_tuuxtf.jpg") no-repeat center center fixed;
+  /* font-family: "Montserrat"; */
+  /*  background: url("http://res.cloudinary.com/shino/image/upload/v1471126188/bgwallpaper_tuuxtf.jpg") no-repeat center center fixed;
 */
   background-size: cover;
   background-attachment: fixed;
@@ -119,7 +119,8 @@ body, html, .tweet-container, .tweet-container > * , .tweets{
   position: relative;
 }
 .tweet-container {
-  padding-top: 5%;
+  padding: 5% 2% 2%;
+  /* padding-left: 2%; */
 }
 
 .tweets {
@@ -202,7 +203,8 @@ display: inline;
 
 .avatar-container {
   margin-right: 5%;
-  border-radius: 5px;
+  border-radius: 6px;
+  padding: 1px 1px 3px 1px;
 }
 
 .neutral {
@@ -215,7 +217,7 @@ display: inline;
 
 .negative {
   background-color: #e74c3c;
-  margin-right: 5%;
+  /* margin-right: 5%; */
 }
 
 .tweet-container columns {
@@ -237,8 +239,10 @@ display: inline;
 .tweets-neutral, .tweets-positive, .tweets-negative {
   /* float: left; */
   display: inline-block;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   height: 100%;
+  border-radius: 5px;
+  border: 1px solid #e1e8ed;
 }
 
 .ct-series-a .ct-bar {
