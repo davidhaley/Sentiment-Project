@@ -280,6 +280,32 @@ display: inline;
   stroke: #FF6414;
 }
 
-.ct-chart .ct-bar:nth-of-type(4n+4) {
-  stroke: #91A453;
+.ct-series-a .ct-line {
+  stroke: #EFB200;
+  stroke-width: 5px;
+}
+
+.ct-series-b .ct-line {
+  stroke: #71A28A;
+  stroke-width: 5px;
+}
+
+.ct-series-c .ct-line {
+  stroke: #FF6414;
+  stroke-width: 5px;
+}
+
+.ct-series-a .ct-point {
+  stroke: #EFB200;
+  stroke-width: 15px;
+}
+
+.ct-series-b .ct-point {
+  stroke: #71A28A;
+  stroke-width: 15px;
+}
+
+.ct-series-c .ct-point {
+  stroke: #FF6414;
+  stroke-width: 15px;
 }
