@@ -68,8 +68,7 @@ $(document).ready(function() {
                 } else {
                   // Gather dates to update line chart
                   var tweetDate = new Date(sentiment[4]);
-                  var formattedDate = $.format.date(tweetDate, "MMM/D");
-                  lineChartLabelsDates.push(formattedDate);
+                  lineChartLabelsDates.push(tweetDate);
 
                   var sentimentId = sentiment[0];
                   var sentimentText = sentiment[1];
@@ -100,12 +99,18 @@ $(document).ready(function() {
                 }
               });
 
-              // var lineChartLabelsDates = lineChartLabelsDates.sort(function(a,b){
-              //   return new Date(b.date) - new Date(a.date);
-              // });
-              // var oldestDate = lineChartLabelsDates[0];
-              // var mostCurrentDate = lineChartLabelsDates[-1];
+              // Get dates for y-axis on line chart
+              var highLowDates = Chartist.getHighLow(lineChartLabelsDates);
+              var mostPresentDate = highLowDates.high
+              if (highLowDates.low == 0) {
+                var oldestDate = mostPresentDate;
+              } else {
+                var oldestDate = highLowDates.low;
+              }
 
+              // Set dates for y-axis on line chart
+              var mostPresentDate = new Date(highLowDates.high);
+              var oldestDate = new Date(highLowDates.low);
 
               // New data to update bar chart
               var barChartData = {
@@ -115,10 +120,12 @@ $(document).ready(function() {
               ]
               };
 
+              // var formattedDate = $.format.date(tweetDate, "MMM/D");
+
               // New data to update line chart
               var lineChartData = {
                 // Dates
-                labels: lineChartLabelsDates,
+                labels: [oldestDate, mostPresentDate],
                 // Sentiment
                 series: [
                   // Postive
