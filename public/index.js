@@ -32,6 +32,7 @@ $(document).ready(function(){
             // Add tweet to HTML
             var appendTweet = $(content).append(fullTweet);
             var finalTweet = $(mediaContent).append(appendTweet);
+            $('.tweet-container').empty()
 
             // Build profile image
             var imageUrl = tweet.user.profile_image_url;
