@@ -55,6 +55,7 @@ $(document).ready(function() {
               var chartData = [0, 0, 0];
               data.forEach(function(sentiment) {
                 console.log(sentiment)
+                debugger;
                 if (sentiment === null) {
                   false;
                   return;
