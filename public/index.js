@@ -3,6 +3,7 @@
 $(document).ready(function() {
   $('#load-tweets').keyup(function(event) {
     event.preventDefault();
+    console.log("button has been pressed");
     if (event.keyCode == '13') {
       $.ajax({
         type: 'POST',
@@ -52,64 +53,80 @@ $(document).ready(function() {
             url: '  /sentiment',
             dataType: 'JSON',
             success: function(data) {
-              var chartData = [0, 0, 0];
+
+              // Setup variables for charts
+              var barChartSeries = [0, 0, 0];
+              var lineChartLabelsDates = [];
+              var lineChartSeriesPositive = [];
+              var lineChartSeriesNeutral = [];
+              var lineChartSeriesNegative = [];
+
               data.forEach(function(sentiment) {
-                console.log(sentiment)
-                debugger;
                 if (sentiment === null) {
                   false;
                   return;
                 } else {
-                  // Every tweet is neutral until proven otherwise
-                  chartData[1] += 1;
+                  // Gather dates to update line chart
+                  var tweetDate = new Date(sentiment[4]);
+                  var formattedDate = $.format.date(tweetDate, "MMM/D");
+                  lineChartLabelsDates.push(formattedDate);
 
                   var sentimentId = sentiment[0];
                   var sentimentText = sentiment[1];
-                  var sentimentScore = sentiment[3];
-                  console.log(sentimentScore);
+                  var sentimentScore = sentiment[3].toFixed(2);
 
                   var sentimentResult = $('<div>').append(sentimentText).append(sentimentId);
                   var matchingTweet = $('.tweets-neutral').children('#' + sentimentId);
                   $(matchingTweet).find('.media-content').append(sentimentResult);
 
                   if (sentimentText === 'positive') {
-                    chartData[1] -= 1;
-                    chartData[0] += 1;
+                    barChartSeries[0] += 1;
+                    lineChartSeriesPositive.push(sentimentScore);
                     $(matchingTweet).find('.avatar-container').removeClass('neutral').addClass('positive');
                     $(matchingTweet).find('.media-content').append(sentimentResult);
                     var element = $(matchingTweet).detach();
                     $('.tweets-positive').append(element);
                   } else if (sentimentText === 'negative') {
-                    chartData[1] -= 1;
-                    chartData[2] += 1;
+                    barChartSeries[2] += 1;
+                    lineChartSeriesNegative.push(sentimentScore);
                     $(matchingTweet).find('.avatar-container').removeClass('neutral').addClass('negative');
                     $(matchingTweet).find('.media-content').append(sentimentResult);
                     var element = $(matchingTweet).detach();
                     $('.tweets-negative').append(element);
+                  } else if (sentimentText === 'neutral') {
+                    barChartSeries[1] += 1;
+                    lineChartSeriesNeutral.push(sentimentScore);
                   }
                 }
               });
+
+              // var lineChartLabelsDates = lineChartLabelsDates.sort(function(a,b){
+              //   return new Date(b.date) - new Date(a.date);
+              // });
+              // var oldestDate = lineChartLabelsDates[0];
+              // var mostCurrentDate = lineChartLabelsDates[-1];
+
 
               // New data to update bar chart
               var barChartData = {
               labels: ["Positive", "Neutral", "Negative"],
               series: [
-                chartData
+                barChartSeries
               ]
               };
 
               // New data to update line chart
               var lineChartData = {
                 // Dates
-                labels: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16],
+                labels: lineChartLabelsDates,
                 // Sentiment
                 series: [
                   // Postive
-                  [5, 5, 10, 8, 7, 5, 4, null, null, null, 10, 10, 7, 8, 6, 9],
+                  lineChartSeriesPositive,
                   // Neutral
-                  [10, 15, null, 12, null, 10, 12, 15, null, null, 12, null, 14, null, null, null],
+                  lineChartSeriesNeutral,
                   // Negative
-                  [null, null, null, null, 3, 4, 1, 3, 4,  6,  7,  9, 5, null, null, null]
+                  lineChartSeriesNegative
                 ]
               };              
 
