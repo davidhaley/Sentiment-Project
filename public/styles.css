@@ -258,22 +258,16 @@ display: inline;
 }
 
 .ct-series-a .ct-bar {
-  /* Colour of your bars */
-  stroke: red;
-  /* The width of your bars */
   stroke-width: 10px;
-  /* Yes! Dashed bars! */
-/*  stroke-dasharray: 20px;
-*/  /* Maybe you like round corners on your bars? */
   stroke-linecap: round;
 }
 
 .ct-chart .ct-bar:nth-of-type(3n+1) {
-  stroke: #EFB200;
+  stroke: #71A28A;
 }
 
 .ct-chart .ct-bar:nth-of-type(3n+2) {
-  stroke: #71A28A;
+  stroke: #EFB200;
 }
 
 .ct-chart .ct-bar:nth-of-type(3n+3) {
@@ -281,12 +275,12 @@ display: inline;
 }
 
 .ct-series-a .ct-line {
-  stroke: #EFB200;
+  stroke: #71A28A;
   stroke-width: 5px;
 }
 
 .ct-series-b .ct-line {
-  stroke: #71A28A;
+  stroke: #EFB200;
   stroke-width: 5px;
 }
 
@@ -296,16 +290,44 @@ display: inline;
 }
 
 .ct-series-a .ct-point {
-  stroke: #EFB200;
+  stroke: #71A28A;
   stroke-width: 15px;
 }
 
 .ct-series-b .ct-point {
-  stroke: #71A28A;
+  stroke: #EFB200;
   stroke-width: 15px;
 }
 
 .ct-series-c .ct-point {
   stroke: #FF6414;
   stroke-width: 15px;
+}
+
+.ct-label.ct-horizontal { 
+  white-space: nowrap; 
+}
+
+
+/*Axis Title
+*/
+.ct-chart {
+    position: relative;
+}
+
+.ct-axis-label {
+    position: absolute;
+}
+
+.ct-x-axis-label {
+    bottom: 0;
+    left: 35%;
+    font-size: 2em;
+}
+
+.ct-y-axis-label {
+    transform: rotate(-90deg);
+    top: 50%;
+    left: -50px;
+    font-size: 2em;
 }
