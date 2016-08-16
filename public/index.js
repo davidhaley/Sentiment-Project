@@ -74,6 +74,8 @@ $(document).ready(function() {
                   var sentimentId = sentiment[0];
                   var sentimentText = sentiment[1];
                   var sentimentScore = sentiment[3].toFixed(2);
+                  var sentimentKeyWordsArray = sentiment[5];
+                  debugger;
                   sentimentCount += 1;
 
                   var sentimentResult = $('<div>').append(sentimentText).append(sentimentId);
