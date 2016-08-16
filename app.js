@@ -44,18 +44,25 @@ app.post('/tweets', function(req, res) {
       var sentimentQueries = [];
 
       JSON.parse(data).statuses.forEach(function(tweet) {
-          // Create object for TwinWord query.
+          // Create query object for TwinWord.
           var queryObj = {};
 
-          // Make query id equivalent to tweet id.
+          // Create date object for chart
+          // var date = {};
+
+          // Make query id and tweet id equivalent to match them in the client.
           queryObj.id = tweet.id_str;
 
-          // Build query for TwinWord API
+          // Build query for TwinWord API.
           var text = tweet.text;
           var query = text.split(" ").join("+").replace("'","");
           
           // Add API query to query object, to later match with tweet when returned. 
           queryObj.query = query;
+
+          // Save dates to find min/max date for chart
+          // date.id = tweet.id_str;
+          // date.date = tweet.created_at
 
           sentimentQueries.push(queryObj);
           contentArray.push(tweet);
@@ -64,10 +71,22 @@ app.post('/tweets', function(req, res) {
       // var max_id = lowest id parameter for the next request
       // number of tweets to request
       // var count = 120;
+
+      // Dates for chart
+      // var searchDates = function(contentArray) {
+      //   contentArray.forEach(function(tweet) {
+      //     return tweet.created_at;
+      //   });
+      // };
+      
+      // var minDate = new Date(Math.min.call(null,searchDates));
+      // var maxDate = new Date(Math.max.call(null,searchDates));
+      debugger;
+
       res.app.locals.sentimentQueries = sentimentQueries;
       res.json(contentArray);
     };
-      twitter.getSearch({"q":"Olympics", "lang":"en", "count": 10}, error, success);
+      twitter.getSearch({"q":"Donald Trump", "lang":"en", "count": 5}, error, success);
       // , "result\_type":"popular"
   }
     getTweets();
@@ -87,7 +106,7 @@ app.get('/sentiment', function(req, res) {
       .end(function (result) {
         if (result.status == 200) {
           console.log("Result status 200. Success");
-          var response = [queryObj.id, result.body.type, result.status];
+          var response = [queryObj.id, result.body.type, result.status, result.body.score];
           callback(null, response);
           return;
         } else {
@@ -100,9 +119,9 @@ app.get('/sentiment', function(req, res) {
     }, function(err, results) {
       res.json(results);
     }));
-  };
+  }
   getSentiment(res.app.locals.sentimentQueries);
 });
 
-  app.listen(3000);
-  console.log('app is listening at localhost:3000');
+app.listen(3000);
+console.log('app is listening at localhost:3000');

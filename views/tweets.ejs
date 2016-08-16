@@ -2,12 +2,50 @@
 <div>
   <div class="tweet-container columns">
     <div class="column is-one-quarter">
-      <ul class="tweets-neutral">
-      </ul>
-      <ul class="tweets-negative">
-      </ul>
       <ul class="tweets-positive">
       </ul>
     </div>
+    <div class="column is-one-quarter">
+      <ul class="tweets-neutral">
+      </ul>
+    </div>
+    <div class="column is-one-quarter">
+      <ul class="tweets-negative">
+      </ul>
+    </div>
+    <div class="column is-one-quarter">
+      <ul class="charts">
+        <div class="ct-chart ct-series-a ct-bar ct-minor-third" id="bar-chart">
+      </ul>
+    </div>
   </div>
+    <script>              
+    var data = {
+    labels: ["Positive", "Neutral", "Negative"],
+    series: [
+      [0, 0, 0]
+    ]
+    };
+    var options = {
+    seriesBarDistance: 15,
+    };
+    var responsiveOptions = [
+    ['screen and (min-width: 641px) and (max-width: 1024px)', {
+    seriesBarDistance: 10,
+    axisX: {
+    labelInterpolationFnc: function(value) {
+    return value;
+    }
+    }
+    }],
+    ['screen and (max-width: 640px)', {
+    seriesBarDistance: 5,
+    axisX: {
+    labelInterpolationFnc: function(value) {
+    return value[0];
+    }
+    }
+    }]
+    ];
+    new Chartist.Bar('#bar-chart', data, options, responsiveOptions);</script></div>
 </div>
