@@ -60,6 +60,7 @@ $(document).ready(function() {
               var lineChartSeriesPositive = [];
               var lineChartSeriesNeutral = [];
               var lineChartSeriesNegative = [];
+              var sentimentCount = 0;
 
               data.forEach(function(sentiment) {
                 if (sentiment === null) {
@@ -73,6 +74,7 @@ $(document).ready(function() {
                   var sentimentId = sentiment[0];
                   var sentimentText = sentiment[1];
                   var sentimentScore = sentiment[3].toFixed(2);
+                  sentimentCount += 1;
 
                   var sentimentResult = $('<div>').append(sentimentText).append(sentimentId);
                   var matchingTweet = $('.tweets-neutral').children('#' + sentimentId);
@@ -99,18 +101,20 @@ $(document).ready(function() {
                 }
               });
 
-              // Get dates for y-axis on line chart
-              var highLowDates = Chartist.getHighLow(lineChartLabelsDates);
-              var mostPresentDate = highLowDates.high
-              if (highLowDates.low == 0) {
-                var oldestDate = mostPresentDate;
-              } else {
-                var oldestDate = highLowDates.low;
-              }
-
-              // Set dates for y-axis on line chart
-              var mostPresentDate = new Date(highLowDates.high);
-              var oldestDate = new Date(highLowDates.low);
+              var increaseMagnitude = function(value) {
+                return value * 10;
+              };
+              
+              var lineChartSeriesPositive = lineChartSeriesPositive.map(increaseMagnitude);
+              var lineChartSeriesNeutral = lineChartSeriesNeutral.map(increaseMagnitude);
+              var lineChartSeriesNegative = lineChartSeriesNegative.map(increaseMagnitude);
+              
+              var xAxisSentimentCount = [];
+              var sentimentCount = function() {
+                for (i = 0; i < sentimentCount.length; i++) {
+                  xAxisSentimentCount.push(i);
+                }
+              };
 
               // New data to update bar chart
               var barChartData = {
@@ -121,11 +125,11 @@ $(document).ready(function() {
               };
 
               // var formattedDate = $.format.date(tweetDate, "MMM/D");
-
               // New data to update line chart
               var lineChartData = {
                 // Dates
-                labels: [oldestDate, mostPresentDate],
+                // labels: [oldestDate, mostPresentDate],
+                labels: xAxisSentimentCount,
                 // Sentiment
                 series: [
                   // Postive
@@ -135,7 +139,19 @@ $(document).ready(function() {
                   // Negative
                   lineChartSeriesNegative
                 ]
-              };              
+              };    
+
+              // Update line chart options to include tweet count on x-axis
+              var lineChartOptions = {
+                plugins: [
+                  Chartist.plugins.axisLabel({
+                    axisX: {
+                        name: 'Based on ' + sentimentCount.length + 'tweets!'
+                    }
+                  })
+                ]
+              };
+
 
               // Update bar chart
               var barChart = $('#bar-chart');
@@ -143,7 +159,7 @@ $(document).ready(function() {
 
               // Update line chart
               var lineChart = $('#line-chart');
-              lineChart.get(0).__chartist__.update(lineChartData);
+              lineChart.get(0).__chartist__.update(lineChartData, lineChartOptions, true);
 
             },
             error: function(data) {

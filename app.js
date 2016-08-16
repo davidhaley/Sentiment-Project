@@ -77,12 +77,11 @@ app.post('/tweets', function(req, res) {
       
       // var minDate = new Date(Math.min.call(null,searchDates));
       // var maxDate = new Date(Math.max.call(null,searchDates));
-      debugger;
 
       res.app.locals.sentimentQueries = sentimentQueries;
       res.json(contentArray);
     };
-      twitter.getSearch({"q":"Olympics", "lang":"en", "count": 3}, error, success);
+      twitter.getSearch({"q":"Donald Trump", "lang":"en", "count": 10}, error, success);
       // , "result\_type":"popular"
   }
     getTweets();
