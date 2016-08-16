@@ -17,6 +17,8 @@ app.use('/public', express.static(__dirname + '/public'));
 
 // Add local variables that can be used in views and throughout the app.
 app.locals.title = 'Sentiment';
+app.locals.sentimentQueries = [];
+app.locals.tweetArray = [];
 
 // App will perform any functions here before responding to routes.
 // app.all('*', function(req, res, next){
@@ -31,17 +33,21 @@ app.get('/', function(req, res) {
 
 app.post('/tweets', function(req, res) {
 
+  var COUNT = 250;
+
   function getTweets(callback) {
     var error = function (error, response, body) {
       if (error) {
         console.log('ERROR [%s]', error);
+        debugger;
         callback(error, null);
         return;
       }
     };
+
     var success = function(data) {
-      var contentArray = [];
-      var sentimentQueries = [];
+
+      debugger;
 
       JSON.parse(data).statuses.forEach(function(tweet) {
           // Create query object for TwinWord.
@@ -60,29 +66,49 @@ app.post('/tweets', function(req, res) {
           // Add tweet date to query object for line chart on client
           queryObj.tweetDate = tweet.created_at;
 
-          sentimentQueries.push(queryObj);
-          contentArray.push(tweet);
+          res.app.locals.sentimentQueries.push(queryObj);
+          res.app.locals.tweetArray.push(tweet);
         });
 
-      // var max_id = lowest id parameter for the next request
-      // number of tweets to request
-      // var count = 120;
+      function sortNumber(a,b) {
+        return a.id_str - b.id_str;
+      }
 
-      // Dates for chart
-      // var searchDates = function(contentArray) {
-      //   contentArray.forEach(function(tweet) {
-      //     return tweet.created_at;
-      //   });
-      // };
-      
-      // var minDate = new Date(Math.min.call(null,searchDates));
-      // var maxDate = new Date(Math.max.call(null,searchDates));
+      res.app.locals.tweetArray = res.app.locals.tweetArray.sort(sortNumber);
 
-      res.app.locals.sentimentQueries = sentimentQueries;
-      res.json(contentArray);
+      // Respond to the view only once all of the Tweets have been gathered
+      // Otherwise, make additional requests to Twitter
+
+      if (res.app.locals.tweetArray.length >= COUNT ) {
+        // Show a maximum amount of tweets on the page
+        var numberOfTweetsToDisplay = -50;
+
+        // Build response
+        var response = res.app.locals.tweetArray.splice(numberOfTweetsToDisplay);
+
+        // Repond to the view
+        res.json(response);
+      } else {
+
+        // The first request to the twitter API should specify a count.
+        // Subsequent requests should utilize max_id and since_id to
+        // Make sure duplicate tweets are not obtained.
+        // More information can be found here: https://dev.twitter.com/rest/public/timelines
+
+        // Twitter will only return Tweets with IDs LOWER than the value passed for max_id.
+        var max_id = res.app.locals.tweetArray[0].id_str;
+        
+        // Twitter will only return Tweets with IDs HIGHER than the value passed for since_id.
+        var since_id = res.app.locals.tweetArray.slice(-1)[0].id_str;
+
+        debugger; 
+
+        // Following Twitter API requests
+        twitter.getSearch({"q":"Donald Trump", "lang":"en", "max_id": max_id}, error, success);
+      };
     };
-      twitter.getSearch({"q":"Donald Trump", "lang":"en", "count": 5}, error, success);
-      // , "result\_type":"popular"
+    // Initial Twitter API request
+    twitter.getSearch({"q":"Elon Musk", "lang":"en", "count": COUNT}, error, success);
   }
     getTweets();
 });
@@ -91,6 +117,8 @@ app.get('/sentiment', function(req, res) {
 
   var apiDomain = "https://twinword-sentiment-analysis.p.mashape.com/analyze/?text="
   var sentimentArray = [];
+
+  debugger;
 
   function getSentiment(sentimentQueries, callback) {
     async.reflect(async.mapLimit(sentimentQueries, 10, function(queryObj, callback) {
