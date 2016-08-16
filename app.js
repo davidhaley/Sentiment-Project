@@ -33,7 +33,8 @@ app.get('/', function(req, res) {
 
 app.post('/tweets', function(req, res) {
 
-  var COUNT = 1;
+  var queryString = "Donald Trump";
+  var COUNT = 300;
 
   function getTweets(callback) {
     var error = function (error, response, body) {
@@ -79,7 +80,7 @@ app.post('/tweets', function(req, res) {
       // Respond to the view only once all of the Tweets have been gathered
       // Otherwise, make additional requests to Twitter
 
-      if (res.app.locals.tweetArray.length >= COUNT ) {
+      if ((res.app.locals.tweetArray.length + 1) >= COUNT ) {
         // Show a maximum amount of tweets on the page
         var numberOfTweetsToDisplay = -50;
 
@@ -104,11 +105,11 @@ app.post('/tweets', function(req, res) {
         debugger; 
 
         // Following Twitter API requests
-        twitter.getSearch({"q":"Donald Trump", "lang":"en", "max_id": max_id}, error, success);
+        twitter.getSearch({"q":queryString, "lang":"en", "max_id": max_id}, error, success);
       };
     };
     // Initial Twitter API request
-    twitter.getSearch({"q":"Elon Musk", "lang":"en", "count": COUNT}, error, success);
+    twitter.getSearch({"q":queryString, "lang":"en", "count": COUNT}, error, success);
   }
     getTweets();
 });
