@@ -19,7 +19,6 @@
       </div>
       <div class="ct-chart ct-series-a ct-line ct-minor-third" id="line-chart">
       </div>
-    </div>
   </div>
     <script> 
 
@@ -57,44 +56,47 @@ var responsiveOptions = [
 ];
 new Chartist.Bar('#bar-chart', data, barChartOptions, responsiveOptions);
 
-
-// Line chart
-
-var data = {
-  // Dates
-  labels: [],
-  // Sentiment
+var lineChartData = {
+  labels: [1,2,3],
   series: [
-    // Postive
-    [],
-    // Neutral
-    [],
-    // Negative
-    []
+    [1,6,4],
+    [1,3,7],
+    [1,3,8],
   ]
 };
 
 var lineChartOptions = {
+  high: 10,
+  low: -10,
+  showArea: true,
+  showLine: true,
+  showPoint: false,
   fullWidth: true,
-  chartPadding: {
-    right: 10
+  axisX: {
+    showLabel: false,
+    showGrid: false
   },
-  lineSmooth: Chartist.Interpolation.cardinal({
-    fillHoles: true,
-  }),
-  low: 0,
   axisY: {
-    minimum: -1,
-    maximum: 1,
-    onlyInteger: false,
-    referenceValue: 1,
-    labelInterpolationFnc: function (value) {
-      return Math.floor(value * 100) / 100;
+  showLabel: true,
+  onlyInteger: true,
+  referenceValue: 1,
+  labelInterpolationFnc: function (value) {
+    return Math.floor(value * 100) / 100;
     }
-  }
+  },
+  plugins: [
+    Chartist.plugins.axisLabel({
+        axisX: {
+            name: 'Tweets'
+        },
+        axisY: {
+            name: 'Sentiment Score'
+        }
+    })
+  ]
 };
 
-new Chartist.Line('#line-chart', data, lineChartOptions, responsiveOptions);
+new Chartist.Line('#line-chart', lineChartData, lineChartOptions);
 
 </script></div>
 </div>
