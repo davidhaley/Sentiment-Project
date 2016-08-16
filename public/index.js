@@ -87,7 +87,6 @@ $(document).ready(function() {
                   $(".content").mark(context); 
 
                   var sentimentResult = $('<div>').append(sentimentText).append(sentimentId);
-                  
                   var matchingTweet = $('.tweets-neutral').children('#' + sentimentId);
                   $(matchingTweet).find('.media-content').append(sentimentResult);
 
