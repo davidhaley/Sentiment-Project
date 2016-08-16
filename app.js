@@ -33,7 +33,7 @@ app.get('/', function(req, res) {
 
 app.post('/tweets', function(req, res) {
 
-  var COUNT = 250;
+  var COUNT = 1;
 
   function getTweets(callback) {
     var error = function (error, response, body) {
@@ -50,24 +50,24 @@ app.post('/tweets', function(req, res) {
       debugger;
 
       JSON.parse(data).statuses.forEach(function(tweet) {
-          // Create query object for TwinWord.
-          var queryObj = {};
+        // Create query object for TwinWord.
+        var queryObj = {};
 
-          // Make query id and tweet id equivalent to match them in the client.
-          queryObj.id = tweet.id_str;
+        // Make query id and tweet id equivalent to match them in the client.
+        queryObj.id = tweet.id_str;
 
-          // Build query for TwinWord API.
-          var text = tweet.text;
-          var query = text.split(" ").join("+").replace("'","");
-          
-          // Add API query to query object, to later match with tweet when returned. 
-          queryObj.query = query;
+        // Build query for TwinWord API.
+        var text = tweet.text;
+        var query = text.split(" ").join("+").replace("'","");
+        
+        // Add API query to query object, to later match with tweet when returned. 
+        queryObj.query = query;
 
-          // Add tweet date to query object for line chart on client
-          queryObj.tweetDate = tweet.created_at;
+        // Add tweet date to query object for line chart on client
+        queryObj.tweetDate = tweet.created_at;
 
-          res.app.locals.sentimentQueries.push(queryObj);
-          res.app.locals.tweetArray.push(tweet);
+        res.app.locals.sentimentQueries.push(queryObj);
+        res.app.locals.tweetArray.push(tweet);
         });
 
       function sortNumber(a,b) {
@@ -129,7 +129,8 @@ app.get('/sentiment', function(req, res) {
       .end(function (result) {
         if (result.status == 200) {
           console.log("Result status 200. Success");
-          var response = [queryObj.id, result.body.type, result.status, result.body.score, queryObj.tweetDate];
+          debugger;
+          var response = [queryObj.id, result.body.type, result.status, result.body.score, queryObj.tweetDate, result.body.keywords];
           callback(null, response);
           return;
         } else {
