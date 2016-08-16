@@ -2,12 +2,10 @@
 body {
   margin: 0;
   padding: 0;
-  /* font-family: "Montserrat"; */
-  /*  background: url("http://res.cloudinary.com/shino/image/upload/v1471126188/bgwallpaper_tuuxtf.jpg") no-repeat center center fixed;
-*/
+   background: url(http://res.cloudinary.com/shino/image/upload/v1471305414/Screen_Shot_2016-08-15_at_5.52.40_PM_ewqhzs.png) no-repeat center center fixed;
   background-size: cover;
   background-attachment: fixed;
-  background-color: gray;
+  height: 100%;
 }
 
 #bg {
@@ -26,7 +24,15 @@ body {
   background: url(https://remoteok.io/assets/search-white.png) no-repeat transparent;
   background-position: 0% 50%;
   background-size: 1em;
-  padding-left: 20px;
+  padding-left: 3%;
+  position: fixed;
+  padding-top: 20px;
+}
+.tweet-container.columns {
+    background: rgba(255,255,255, 0.6);
+    margin: 20px;
+    border-radius: 4px;
+    margin-top: 5%;
 }
 
 
@@ -35,14 +41,14 @@ body {
 }
 
 #load-tweets {
-
-  color: #fff;
-  border-width: 0 0 1px 0;
-  padding: 0.5em 1em;
-  font-size: 2.3em;
-  background: url(https://remoteok.io/assets/search-white.png) no-repeat transparent;
-  background-position: 0% 50%;
-  background-size: 1em;
+    color: #fff;
+    border-width: 0 0 1px 0;
+    padding: 0.5em 1.2em;
+    font-size: 2.3em;
+    background: url(https://remoteok.io/assets/search-white.png) no-repeat transparent;
+    background-position: 0% 50%;
+    background-size: 1em;
+    margin-top: 3.5%;
 }
 
 .nav {
@@ -64,6 +70,10 @@ body {
 #sidebar.visible{
   right:0px;
   transition:right 0.3s linear;
+}
+ul.charts {
+    background-color: white;
+    border-radius: 5px;
 }
 
 ul{
@@ -119,8 +129,9 @@ body, html, .tweet-container, .tweet-container > * , .tweets{
   position: relative;
 }
 .tweet-container {
-  padding: 5% 2% 2%;
+  /* padding: 5% 2% 2%; */
   /* padding-left: 2%; */
+  /* margin-top: 20%; */
 }
 
 .tweets {
@@ -175,11 +186,16 @@ body, html, .tweet-container, .tweet-container > * , .tweets{
     100% { opacity:1; }
 }
 
-#type {
+.type {
   color: white;
   font-family: 'Montserrat', sans-serif;
   font-size: 3.5em;
+}
 
+#about{
+  padding-right: 20px;
+  display: inline;
+  margin-top: 20%;
 }
 
 .element {
@@ -212,7 +228,7 @@ display: inline;
 }
 
 .positive {
-  background-color: #2ecc71;
+   background-color: #2ecc71; 
 }
 
 .negative {
@@ -243,6 +259,7 @@ display: inline;
   height: 100%;
   border-radius: 5px;
   border: 1px solid #e1e8ed;
+!opacity: 1
 }
 
 .ct-series-a .ct-bar {
