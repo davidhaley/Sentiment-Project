@@ -77,18 +77,19 @@ $(document).ready(function() {
                   var sentimentKeyWordsArray = sentiment[5];
                   sentimentCount += 1;
 
-                  // Get keywords for word highlighting
-                  // var context = [];
-                  // sentimentKeyWordsArray.forEach(function(keyword) {
-                  //   context.push(keyword.word);
-                  // });
+                  // Get Sentiment keywords for word highlighting
+                  var context = [];
+                  sentimentKeyWordsArray.forEach(function(keyword) {
+                    context.push(keyword.word);
+                  });
+
+                  // Highlight Sentiment keywords
+                  $(".content").mark(context); 
 
                   var sentimentResult = $('<div>').append(sentimentText).append(sentimentId);
+                  
                   var matchingTweet = $('.tweets-neutral').children('#' + sentimentId);
                   $(matchingTweet).find('.media-content').append(sentimentResult);
-
-                  // Instantiate Mark.js
-                  // $('.context').mark(context);
 
                   if (sentimentText === 'positive') {
                     barChartSeries[0] += 1;

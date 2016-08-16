@@ -342,3 +342,9 @@ mark{
     background: orange;
     color: black;
 }
+
+/*TEST*/
+.highlight {
+  background: orange;
+  color: black;
+}
