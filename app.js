@@ -34,7 +34,7 @@ app.get('/', function(req, res) {
 app.post('/tweets', function(req, res) {
 
   var queryString = "Donald Trump";
-  var COUNT = 300;
+  var COUNT = 5;
 
   function getTweets(callback) {
     var error = function (error, response, body) {

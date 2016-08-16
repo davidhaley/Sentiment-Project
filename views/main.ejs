@@ -1,11 +1,18 @@
 <% include header %>
-
-<main role="main">
-
-  <% include nav %>
-  <% include tweets %>
-  <% include chart %>
-
-</main>
-
-<% include footer %>
+<div class="body-container">
+	<header role="banner" class="banner">
+		<% include nav %>
+		  <form class="search-container" role="search">
+    <label>
+      <input type="search" id="load-tweets">
+    </label>
+  </form>
+	</header>
+	<main role="main">
+	<% include tweets %>
+	<% include chart %>
+	</main>
+	<% include footer %>
+</div>
+</body>
+</html>
