@@ -336,3 +336,9 @@ display: inline;
     left: -50px;
     font-size: 2em;
 }
+
+/*Mark.js settings*/
+mark{
+    background: orange;
+    color: black;
+}
