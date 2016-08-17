@@ -13,26 +13,25 @@ const Twitter = require("twitter-node-client").Twitter;
 const twitter = new Twitter(config);
 var async = require('async');
 
+// Setup bodyParser to receive requests from client
 var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 // Set up the app to serve files in the public folder.
 app.use('/public', express.static(__dirname + '/public'));
-// app.use(express.bodyParser());
 
-// Add local variables that can be used in views and throughout the app.
+// *** Don't change these ***
 app.locals.title = 'Sentiment';
 app.locals.sentimentQueries = [];
 app.locals.tweetArray = [];
-app.locals.count = 30;
+// *** Change count in tweet route below ***
+app.locals.count = 0;
+app.locals.queryString = "";
 
-// App will perform any functions here before responding to routes.
-// app.all('*', function(req, res, next){
-//   next();
-// });
-
+// EJS view engine
 app.set('view engine', 'ejs');
 
+// Landing page
 app.get('/', function(req, res) {
   res.render('main.ejs');
 });
@@ -40,7 +39,11 @@ app.get('/', function(req, res) {
 app.post('/tweets', jsonParser, function(req, res) {
   if (!req.body) return res.sendStatus(400);
 
-  var queryString = req.body.query;
+  // Receive search query from client
+  res.app.locals.queryString = req.body.query;
+
+  // Change query count here
+  res.app.locals.count = 25;
 
   function getTweets(callback) {
     var error = function (error, response, body) {
@@ -123,12 +126,12 @@ app.post('/tweets', jsonParser, function(req, res) {
         }
 
         // Following Twitter API requests
-        twitter.getSearch({"q":queryString, "lang":"en", "count": res.app.locals.count, "max_id": max_id}, error, success);
+        twitter.getSearch({"q":res.app.locals.queryString, "lang":"en", "count": res.app.locals.count, "max_id": max_id}, error, success);
       };
     };
 
     // Initial Twitter API request
-    twitter.getSearch({"q":queryString, "lang":"en", "count": res.app.locals.count}, error, success);
+    twitter.getSearch({"q":res.app.locals.queryString, "lang":"en", "count": res.app.locals.count}, error, success);
   }
     getTweets();
 });
