@@ -100,11 +100,8 @@ $(document).ready(function() {
                 var tooltip = tooltip.toString().replace(/"|,/g,'');
                 var finalToolTip = "<strong>Overall Sentiment: <strong>" + sentimentText.toUpperCase() + "<br>" + "<strong>Overall Score: <strong>" + (sentimentScore * 10).toFixed(2) + "<br><br>" + tooltip;
 
-                // Highlight Sentiment keywords
-                $('.content').mark(context);
-
-                // Find the tweet that matches the sentiment score
-                var matchingTweet = $('.tweets-neutral').children('#' + sentimentId).attr('title', finalToolTip).tipsy({html: true });
+                // Find the tweet that matches the sentiment score, attach tooltip, and highlight keywords
+                var matchingTweet = $('.tweets-neutral').children('#' + sentimentId).attr('title', finalToolTip).tipsy({html: true }).mark(context);
 
                 if (sentimentText === 'positive') {
                   barChartSeries[0] += 1;
@@ -184,6 +181,21 @@ $(document).ready(function() {
             var lineChart = $('#line-chart');
             lineChart.get(0).__chartist__.update(lineChartData, lineChartOptions, true);
 
+            // Get percent of sentiment for bar chart
+            var totalCount = (lineChartSeriesPositive.length + lineChartSeriesNeutral.length + lineChartSeriesNegative.length)
+            var positivePercent = ((lineChartSeriesPositive.length / totalCount) * 100).toFixed(0);
+            var neutralPercent = ((lineChartSeriesNeutral.length / totalCount) * 100).toFixed(0);
+            var negativePercent = ((lineChartSeriesNegative.length / totalCount) * 100).toFixed(0);
+
+            // Include percent of sentiment and total tweet count above bar chart
+            var totalTweets = $('<li>').addClass('.total').append(totalCount);
+            $('.total-tweets').append(totalTweets);
+            var posPercent = $('<li>').addClass('percent').append(positivePercent);
+            $('.positive-percent').append(posPercent);
+            var neuPercent = $('<li>').addClass('percent').append(neutralPercent);
+            $('.positive-percent').append(neuPercent);
+            var negPercent = $('<li>').addClass('percent').append(negativePercent);
+            $('.positive-percent').append(negPercent);
           },
           error: function(data) {
             console.log('error');
