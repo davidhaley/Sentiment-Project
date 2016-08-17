@@ -1,6 +1,9 @@
 'use strict';
 
 $(document).ready(function() {
+  $(".search-container").on("submit", function(){
+    return false;
+  });
   $('#load-tweets').keyup(function(event) {
     event.preventDefault();
     console.log("button has been pressed");
@@ -74,11 +77,21 @@ $(document).ready(function() {
                   var sentimentId = sentiment[0];
                   var sentimentText = sentiment[1];
                   var sentimentScore = sentiment[3].toFixed(2);
+                  var sentimentKeyWordsArray = sentiment[5];
                   sentimentCount += 1;
+
+                  // Get keywords for word highlighting
+                  // var context = [];
+                  // sentimentKeyWordsArray.forEach(function(keyword) {
+                  //   context.push(keyword.word);
+                  // });
 
                   var sentimentResult = $('<div>').append(sentimentText).append(sentimentId);
                   var matchingTweet = $('.tweets-neutral').children('#' + sentimentId);
                   $(matchingTweet).find('.media-content').append(sentimentResult);
+
+                  // Instantiate Mark.js
+                  // $('.context').mark(context);
 
                   if (sentimentText === 'positive') {
                     barChartSeries[0] += 1;

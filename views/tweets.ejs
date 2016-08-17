@@ -1,5 +1,4 @@
-<input type="search" id="load-tweets">
-<div>
+<div id="bg">
   <div class="tweet-container columns">
     <div class="column is-one-quarter">
       <ul class="tweets-positive">
@@ -16,87 +15,81 @@
     <div class="column is-one-quarter">
       <div class="charts">
         <div class="ct-chart ct-series-a ct-bar ct-minor-third" id="bar-chart">
-      </div>
-      <div class="ct-chart ct-series-a ct-line ct-minor-third" id="line-chart">
-      </div>
-  </div>
-    <script> 
-
-// Bar chart
-
-var data = {
-  labels: ["Positive", "Neutral", "Negative"],
-  series: [
-    [0, 0, 0]
-  ]
-};
-var barChartOptions = {
-  seriesBarDistance: 15,
-  axisY: {
-    onlyInteger: true
-  }
-};
-var responsiveOptions = [
-  ['screen and (min-width: 641px) and (max-width: 1024px)', {
-  seriesBarDistance: 10,
-  axisX: {
-    labelInterpolationFnc: function(value) {
-    return value;
-    }
-  }
-}],
-  ['screen and (max-width: 640px)', {
-  seriesBarDistance: 5,
-  axisX: {
-    labelInterpolationFnc: function(value) {
-    return value[0];
-    }
-  }
-}]
-];
-new Chartist.Bar('#bar-chart', data, barChartOptions, responsiveOptions);
-
-var lineChartData = {
-  labels: [1,2,3],
-  series: [
-    [1,6,4],
-    [1,3,7],
-    [1,3,8],
-  ]
-};
-
-var lineChartOptions = {
-  high: 10,
-  low: -10,
-  showArea: true,
-  showLine: true,
-  showPoint: false,
-  fullWidth: true,
-  axisX: {
-    showLabel: false,
-    showGrid: false
-  },
-  axisY: {
-  showLabel: true,
-  onlyInteger: true,
-  referenceValue: 1,
-  labelInterpolationFnc: function (value) {
-    return Math.floor(value * 100) / 100;
-    }
-  },
-  plugins: [
-    Chartist.plugins.axisLabel({
+        </div>
+        <div class="ct-chart ct-series-a ct-line ct-minor-third" id="line-chart">
+        </div>
+        <script>
+        // Bar chart
+        var data = {
+        labels: ["Positive", "Neutral", "Negative"],
+        series: [
+        [0, 0, 0]
+        ]
+        };
+        var barChartOptions = {
+        seriesBarDistance: 15,
+        axisY: {
+        onlyInteger: true
+        }
+        };
+        var responsiveOptions = [
+        ['screen and (min-width: 641px) and (max-width: 1024px)', {
+        seriesBarDistance: 10,
         axisX: {
-            name: 'Tweets'
+        labelInterpolationFnc: function(value) {
+        return value;
+        }
+        }
+        }],
+        ['screen and (max-width: 640px)', {
+        seriesBarDistance: 5,
+        axisX: {
+        labelInterpolationFnc: function(value) {
+        return value[0];
+        }
+        }
+        }]
+        ];
+        new Chartist.Bar('#bar-chart', data, barChartOptions, responsiveOptions);
+        var lineChartData = {
+        labels: [1,2,3],
+        series: [
+        [1,6,4],
+        [1,3,7],
+        [1,3,8],
+        ]
+        };
+        var lineChartOptions = {
+        high: 10,
+        low: -10,
+        showArea: true,
+        showLine: true,
+        showPoint: false,
+        fullWidth: true,
+        axisX: {
+        showLabel: false,
+        showGrid: false
         },
         axisY: {
-            name: 'Sentiment Score'
+        showLabel: true,
+        onlyInteger: true,
+        referenceValue: 1,
+        labelInterpolationFnc: function (value) {
+        return Math.floor(value * 100) / 100;
         }
-    })
-  ]
-};
-
-new Chartist.Line('#line-chart', lineChartData, lineChartOptions);
-
-</script></div>
-</div>
+        },
+        plugins: [
+        Chartist.plugins.axisLabel({
+        axisX: {
+        name: 'Tweets'
+        },
+        axisY: {
+        name: 'Sentiment Score'
+        }
+        })
+        ]
+        };
+        new Chartist.Line('#line-chart', lineChartData, lineChartOptions);
+      </script></div>
+    </div>
+  </div>
