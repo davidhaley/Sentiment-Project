@@ -468,6 +468,11 @@ width: 100%;
 
 /*Mark.js settings*/
 mark{
-    background: orange;
-    color: black;
+    color: #69707a;
+}
+
+div.media-content:hover > div > p > mark {
+  background: orange;
+  color: black;
+  font-weight: bold;
 }
