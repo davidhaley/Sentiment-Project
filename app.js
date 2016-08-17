@@ -19,7 +19,7 @@ app.use('/public', express.static(__dirname + '/public'));
 app.locals.title = 'Sentiment';
 app.locals.sentimentQueries = [];
 app.locals.tweetArray = [];
-app.locals.count = 50;
+app.locals.count = 10;
 
 // App will perform any functions here before responding to routes.
 // app.all('*', function(req, res, next){
@@ -34,7 +34,7 @@ app.get('/', function(req, res) {
 
 app.post('/tweets', function(req, res) {
 
-  var queryString = "BACON!";
+  var queryString = "Tesla Model 3";
 
   function getTweets(callback) {
     var error = function (error, response, body) {
@@ -78,8 +78,6 @@ app.post('/tweets', function(req, res) {
       // Respond to the view only once all of the Tweets have been gathered
       // Otherwise, make additional requests to Twitter
 
-      debugger;
-
       if ((res.app.locals.tweetArray.length + 1) >= res.app.locals.count ) {
         console.log('Tweet Array Length: ' + res.app.locals.tweetArray.length);
         console.log('Count: ' + res.app.locals.count);
@@ -94,7 +92,6 @@ app.post('/tweets', function(req, res) {
       } else {
         console.log('Tweet Array Length: ' + res.app.locals.tweetArray.length);
         console.log('Count: ' + res.app.locals.count);
-              debugger;
 
         // The first request to the twitter API should specify a count.
         // Subsequent requests should utilize max_id and since_id to
@@ -107,16 +104,23 @@ app.post('/tweets', function(req, res) {
         // Twitter will only return Tweets with IDs HIGHER than the value passed for since_id.
         var since_id = res.app.locals.tweetArray.slice(-1)[0].id_str;
 
-        if ((res.app.locals.count - res.app.locals.tweetArray.length) < res.app.locals.count ) {
+        if (res.app.locals.count >= 100) {
+          var pageCount = 100;
+        } else {
+          var pageCount = res.app.locals.count;
+          console.log("Page Count: " + pageCount);
+        };
+
+        if ((res.app.locals.tweetArray.length + pageCount) > res.app.locals.count) {
           res.app.locals.count = res.app.locals.count - res.app.locals.tweetArray.length;
           console.log("New Count: " + res.app.locals.count);
         }
-        debugger;
+
         // Following Twitter API requests
         twitter.getSearch({"q":queryString, "lang":"en", "count": res.app.locals.count, "max_id": max_id}, error, success);
       };
     };
-    debugger;
+
     // Initial Twitter API request
     twitter.getSearch({"q":queryString, "lang":"en", "count": res.app.locals.count}, error, success);
   }

@@ -89,7 +89,7 @@ $(document).ready(function() {
                   var tooltip = [];
                   sentimentKeyWordsArray.forEach(function(keyword) {
                     context.push(keyword.word);
-                    tooltip.push(keyword.word + ": " + keyword.score.toFixed(2) + "\n");
+                    tooltip.push(keyword.word + ": " + (keyword.score * 10).toFixed(2) + "<br>");
                   });
 
                   // Prepare tooltip
