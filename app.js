@@ -39,16 +39,14 @@ app.post('/tweets', function(req, res) {
   function getTweets(callback) {
     var error = function (error, response, body) {
       if (error) {
-        console.log('ERROR [%s]', error);
-        debugger;
-        callback(error, null);
+        // console.log('ERROR [%s]', error);
+        console.log(error)
+        // callback(error, null);
         return;
       }
     };
 
     var success = function(data) {
-
-      debugger;
 
       JSON.parse(data).statuses.forEach(function(tweet) {
         // Create query object for TwinWord.
@@ -102,8 +100,6 @@ app.post('/tweets', function(req, res) {
         // Twitter will only return Tweets with IDs HIGHER than the value passed for since_id.
         var since_id = res.app.locals.tweetArray.slice(-1)[0].id_str;
 
-        debugger; 
-
         // Following Twitter API requests
         twitter.getSearch({"q":queryString, "lang":"en", "max_id": max_id}, error, success);
       };
@@ -119,8 +115,6 @@ app.get('/sentiment', function(req, res) {
   var apiDomain = "https://twinword-sentiment-analysis.p.mashape.com/analyze/?text="
   var sentimentArray = [];
 
-  debugger;
-
   function getSentiment(sentimentQueries, callback) {
     async.reflect(async.mapLimit(sentimentQueries, 10, function(queryObj, callback) {
       var query = queryObj.query;
@@ -130,7 +124,6 @@ app.get('/sentiment', function(req, res) {
       .end(function (result) {
         if (result.status == 200) {
           console.log("Result status 200. Success");
-          debugger;
           var response = [queryObj.id, result.body.type, result.status, result.body.score, queryObj.tweetDate, result.body.keywords];
           callback(null, response);
           return;
