@@ -31,7 +31,7 @@ $(document).ready(function() {
             var userName = $('<strong>').append(tweet.user.name).append(' ');
             var atUser = $('<small>').append('@' + tweet.user.screen_name).append('<br>');
             var text = tweet.text;
-            var fullTweet = $('<p>').append(userName).append(atUser).append(text).append(id);
+            var fullTweet = $('<p>').append(userName).append(atUser).append(text);
 
             // Add tweet to HTML
             var appendTweet = $(content).append(fullTweet);
@@ -65,6 +65,9 @@ $(document).ready(function() {
               var lineChartSeriesNegative = [];
               var sentimentCount = 0;
 
+              // Load Tipsy tooltip plugin
+              // $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
+
               data.forEach(function(sentiment) {
                 if (sentiment === null) {
                   false;
@@ -80,31 +83,30 @@ $(document).ready(function() {
                   var sentimentKeyWordsArray = sentiment[5];
                   sentimentCount += 1;
 
-                  // Get keywords for word highlighting
-                  // var context = [];
-                  // sentimentKeyWordsArray.forEach(function(keyword) {
-                  //   context.push(keyword.word);
-                  // });
+                  // Get Sentiment keywords for word highlighting & Sentiment scores for tooltip
+                  var context = [];
+                  var tooltip = [];
+                  sentimentKeyWordsArray.forEach(function(keyword) {
+                    context.push(keyword.word);
+                    tooltip.push(keyword.word + ": " + keyword.score + "\n");
+                  });
+                  var tooltip = tooltip.toString().replace(/"|,/g,'');
 
-                  var sentimentResult = $('<div>').append(sentimentText).append(sentimentId);
+                  // Highlight Sentiment keywords
+                  $('.content').mark(context);
+
                   var matchingTweet = $('.tweets-neutral').children('#' + sentimentId);
-                  $(matchingTweet).find('.media-content').append(sentimentResult);
-
-                  // Instantiate Mark.js
-                  // $('.context').mark(context);
 
                   if (sentimentText === 'positive') {
                     barChartSeries[0] += 1;
                     lineChartSeriesPositive.push(sentimentScore);
                     $(matchingTweet).find('.avatar-container').removeClass('neutral').addClass('positive');
-                    $(matchingTweet).find('.media-content').append(sentimentResult);
                     var element = $(matchingTweet).detach();
                     $('.tweets-positive').append(element);
                   } else if (sentimentText === 'negative') {
                     barChartSeries[2] += 1;
                     lineChartSeriesNegative.push(sentimentScore);
                     $(matchingTweet).find('.avatar-container').removeClass('neutral').addClass('negative');
-                    $(matchingTweet).find('.media-content').append(sentimentResult);
                     var element = $(matchingTweet).detach();
                     $('.tweets-negative').append(element);
                   } else if (sentimentText === 'neutral') {
