@@ -29,7 +29,7 @@ embed {
 }
 
 html {
-  overflow-y: scroll;
+  overflow-y: hidden;
 }
 
 ul {
@@ -194,7 +194,7 @@ html {
   -webkit-font-smoothing: antialiased;
   min-width: 300px;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: hidden;
   text-rendering: optimizeLegibility;
 }
 
