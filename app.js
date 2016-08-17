@@ -24,7 +24,8 @@ app.use('/public', express.static(__dirname + '/public'));
 app.locals.title = 'Sentiment';
 app.locals.sentimentQueries = [];
 app.locals.tweetArray = [];
-app.locals.count = 30;
+app.locals.count = 20;
+
 
 // App will perform any functions here before responding to routes.
 // app.all('*', function(req, res, next){
