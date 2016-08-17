@@ -100,11 +100,8 @@ $(document).ready(function() {
                 var tooltip = tooltip.toString().replace(/"|,/g,'');
                 var finalToolTip = "<strong>Overall Sentiment: <strong>" + sentimentText.toUpperCase() + "<br>" + "<strong>Overall Score: <strong>" + (sentimentScore * 10).toFixed(2) + "<br><br>" + tooltip;
 
-                // Highlight Sentiment keywords
-                $('.content').mark(context);
-
-                // Find the tweet that matches the sentiment score
-                var matchingTweet = $('.tweets-neutral').children('#' + sentimentId).attr('title', finalToolTip).tipsy({html: true });
+                // Find the tweet that matches the sentiment score, attach tooltip, and highlight keywords
+                var matchingTweet = $('.tweets-neutral').children('#' + sentimentId).attr('title', finalToolTip).tipsy({html: true }).mark(context);
 
                 if (sentimentText === 'positive') {
                   barChartSeries[0] += 1;

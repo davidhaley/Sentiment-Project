@@ -43,7 +43,7 @@ app.post('/tweets', jsonParser, function(req, res) {
   res.app.locals.queryString = req.body.query;
 
   // Change query count here
-  res.app.locals.count = 25;
+  res.app.locals.count = 50;
 
   function getTweets(callback) {
     var error = function (error, response, body) {
@@ -129,7 +129,7 @@ app.post('/tweets', jsonParser, function(req, res) {
         twitter.getSearch({"q":res.app.locals.queryString, "lang":"en", "count": res.app.locals.count, "max_id": max_id}, error, success);
       };
     };
-
+    debugger;
     // Initial Twitter API request
     twitter.getSearch({"q":res.app.locals.queryString, "lang":"en", "count": res.app.locals.count}, error, success);
   }
@@ -152,7 +152,6 @@ app.get('/sentiment', function(req, res) {
         if (result.status == 200) {
           console.log("Result status 200. Success");
           queryCounter += 1;
-          debugger;
           console.log("Queries remaining: ")
           console.log(sentimentQueries.length - queryCounter);
           var response = [queryObj.id, result.body.type, result.status, result.body.score, queryObj.tweetDate, result.body.keywords];
