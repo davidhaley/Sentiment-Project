@@ -34,13 +34,14 @@ app.get('/', function(req, res) {
 app.post('/tweets', function(req, res) {
 
   var queryString = "Donald Trump";
-  var COUNT = 10;
+  var COUNT = 20;
 
   function getTweets(callback) {
     var error = function (error, response, body) {
       if (error) {
-        console.log('ERROR [%s]', error);
-        callback(error, null);
+        // console.log('ERROR [%s]', error);
+        console.log(error)
+        // callback(error, null);
         return;
       }
     };
