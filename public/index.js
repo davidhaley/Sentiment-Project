@@ -25,7 +25,8 @@ $(document).ready(function() {
             var figure = $('<figure>').addClass('image is-48x48');
             var mediaContent = $('<div>').addClass('media-content');
             var content = $('<div>').addClass('content');
-            var avatarContainer = $('<div>').addClass('avatar-container').addClass('neutral');
+            var avatarContainer = $('<div>').addClass('avatar-container');
+            var hr = $('<hr>').addClass('hr').addClass('neutral');
 
             // Build tweet
             var userName = $('<strong>').append(tweet.user.name).append(' ');
@@ -48,7 +49,7 @@ $(document).ready(function() {
 
             // Add profile image and tweet to page
             var mainArticle = $(article).append(avatar).append(finalTweet);
-            var completeTweet = $(tweetBox).append(mainArticle);
+            var completeTweet = $(tweetBox).append(mainArticle).append(hr);
             $('.tweets-neutral').append(completeTweet);
           });
           $.ajax({
@@ -88,25 +89,29 @@ $(document).ready(function() {
                   var tooltip = [];
                   sentimentKeyWordsArray.forEach(function(keyword) {
                     context.push(keyword.word);
-                    tooltip.push(keyword.word + ": " + keyword.score + "\n");
+                    tooltip.push(keyword.word + ": " + keyword.score.toFixed(2) + "\n");
                   });
+
+                  // Prepare tooltip
                   var tooltip = tooltip.toString().replace(/"|,/g,'');
+                  var finalToolTip = "<strong>Overall Sentiment: <strong>" + sentimentText.toUpperCase() + "<br>" + "<strong>Overall Score: <strong>" + sentimentScore + "<br><br>" + tooltip;
 
                   // Highlight Sentiment keywords
                   $('.content').mark(context);
 
-                  var matchingTweet = $('.tweets-neutral').children('#' + sentimentId);
+                  // Find the tweet that matches the sentiment score
+                  var matchingTweet = $('.tweets-neutral').children('#' + sentimentId).attr('title', finalToolTip).tipsy({html: true });
 
                   if (sentimentText === 'positive') {
                     barChartSeries[0] += 1;
                     lineChartSeriesPositive.push(sentimentScore);
-                    $(matchingTweet).find('.avatar-container').removeClass('neutral').addClass('positive');
+                    $(matchingTweet).find('.hr').removeClass('neutral').addClass('positive');
                     var element = $(matchingTweet).detach();
                     $('.tweets-positive').append(element);
                   } else if (sentimentText === 'negative') {
                     barChartSeries[2] += 1;
                     lineChartSeriesNegative.push(sentimentScore);
-                    $(matchingTweet).find('.avatar-container').removeClass('neutral').addClass('negative');
+                    $(matchingTweet).find('.hr').removeClass('neutral').addClass('negative');
                     var element = $(matchingTweet).detach();
                     $('.tweets-negative').append(element);
                   } else if (sentimentText === 'neutral') {
@@ -116,6 +121,7 @@ $(document).ready(function() {
                 }
               });
 
+              // Increase the magnitude of the scores by one decimal place
               var increaseMagnitude = function(value) {
                 return value * 10;
               };
@@ -154,7 +160,7 @@ $(document).ready(function() {
                   // Negative
                   lineChartSeriesNegative
                 ]
-              };    
+              };
 
               // Update line chart options to include tweet count on x-axis
               var lineChartOptions = {
@@ -167,7 +173,6 @@ $(document).ready(function() {
                 ]
               };
 
-
               // Update bar chart
               var barChart = $('#bar-chart');
               barChart.get(0).__chartist__.update(barChartData);
@@ -178,14 +183,12 @@ $(document).ready(function() {
 
             },
             error: function(data) {
-              debugger;
               console.log('error');
               console.log(data);
             }
           });
         },
         error: function(data) {
-          debugger;
           console.log('error');
           console.log(data);
         }
