@@ -1,16 +1,15 @@
 'use strict';
 
 $(document).ready(function() {
-  // $(".search-container").on("submit", function(){
-  //   return false;
-  // });
   $('.search-container').on('submit', function(event) {
     event.preventDefault();
 
+    // Empty columns before next search request
     $('.column').children('.tweets-positive').empty();
     $('.column').children('.tweets-neutral').empty();
     $('.column').children('.tweets-negative').empty();
     
+    // Prepare search query
     var q = {query: $('#load-tweets').val()};
     var qj = JSON.stringify(q);
 
@@ -74,9 +73,6 @@ $(document).ready(function() {
             var lineChartSeriesNegative = [];
             var sentimentCount = 0;
 
-            // Load Tipsy tooltip plugin
-            // $('a[rel=tipsy]').tipsy({fade: true, gravity: 'n'});
-
             data.forEach(function(sentiment) {
               if (sentiment === null) {
                 false;
@@ -102,7 +98,7 @@ $(document).ready(function() {
 
                 // Prepare tooltip
                 var tooltip = tooltip.toString().replace(/"|,/g,'');
-                var finalToolTip = "<strong>Overall Sentiment: <strong>" + sentimentText.toUpperCase() + "<br>" + "<strong>Overall Score: <strong>" + sentimentScore + "<br><br>" + tooltip;
+                var finalToolTip = "<strong>Overall Sentiment: <strong>" + sentimentText.toUpperCase() + "<br>" + "<strong>Overall Score: <strong>" + (sentimentScore * 10).toFixed(2) + "<br><br>" + tooltip;
 
                 // Highlight Sentiment keywords
                 $('.content').mark(context);
@@ -153,7 +149,6 @@ $(document).ready(function() {
             ]
             };
 
-            // var formattedDate = $.format.date(tweetDate, "MMM/D");
             // New data to update line chart
             var lineChartData = {
               // Dates
