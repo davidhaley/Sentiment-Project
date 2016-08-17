@@ -89,12 +89,11 @@ $(document).ready(function() {
                   var tooltip = [];
                   sentimentKeyWordsArray.forEach(function(keyword) {
                     context.push(keyword.word);
-                    tooltip.push(keyword.word + ": " + keyword.score.toFixed(2) + "<br>");
+                    tooltip.push(keyword.word + ": " + (keyword.score * 10).toFixed(2) + "<br>");
                   });
 
                   // Prepare tooltip
                   var tooltip = tooltip.toString().replace(/"|,/g,'');
-                  debugger;
                   var finalToolTip = "<strong>Overall Sentiment: <strong>" + sentimentText.toUpperCase() + "<br>" + "<strong>Overall Score: <strong>" + sentimentScore + "<br><br>" + tooltip;
 
                   // Highlight Sentiment keywords
