@@ -1,19 +1,26 @@
-
-body {
-  margin: 0;
-  padding: 0;
-   background: url(http://res.cloudinary.com/shino/image/upload/v1471305414/Screen_Shot_2016-08-15_at_5.52.40_PM_ewqhzs.png) no-repeat center center fixed;
-  background-size: cover;
-  background-attachment: fixed;
+html, body, .body-container {
   height: 100%;
 }
 
+.body-container {
+  display:flex;
+  flex-direction: column;
+}
+
+main {
+  flex:1 ;
+}
+body {
+  margin: 0;
+  padding: 0;
+   background: url(http://res.cloudinary.com/shino/image/upload/v1471385774/bg_vzqedw.png) no-repeat center center fixed;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
 #bg {
-  position: fixed; 
-  top: 0; 
-  left: 0; 
-  min-width: 100%;
-  min-height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 #input {
@@ -28,27 +35,32 @@ body {
   position: fixed;
   padding-top: 20px;
 }
-.tweet-container.columns {
+.tweet-container {
     background: rgba(255,255,255, 0.6);
     margin: 20px;
     border-radius: 4px;
-    margin-top: 5%;
+    flex: 1;
 }
 
+.search-container { 
+  text-align: center;
+}
 
 #input:focus {
   border-bottom-color: blue;
 }
-
 #load-tweets {
     color: #fff;
+    display: inline-block;
     border-width: 0 0 1px 0;
-    padding: 0.5em 1.2em;
+    /* padding: 0.5em 1.2em; */
     font-size: 2.3em;
     background: url(https://remoteok.io/assets/search-white.png) no-repeat transparent;
     background-position: 0% 50%;
     background-size: 1em;
-    margin-top: 3.5%;
+    /* margin-top: 3.5%; */
+    /* margin-left: 40%; */
+    max-width: 50%;
 }
 
 .nav {
@@ -56,21 +68,11 @@ body {
   padding-top: 10px;
 }
 
-#sidebar{
-  background:#151718;
-  width:200px;
-  height:7%;
-  display:block;
-  position:absolute;
-  right:-200px;
-  top:0px;
-  transition:right 0.3s linear;
+.charts {
+    background-color: white;
+    border-radius: 5px;
 }
 
-#sidebar.visible{
-  right:0px;
-  transition:right 0.3s linear;
-}
 ul.charts {
     background-color: white;
     border-radius: 5px;
@@ -122,16 +124,6 @@ ul li a{
 
 #sidebar-btn span:nth-child(2){
   width:50%;
-}
-
-body, html, .tweet-container, .tweet-container > * , .tweets{
-  height: 100%;
-  position: relative;
-}
-.tweet-container {
-  /* padding: 5% 2% 2%; */
-  /* padding-left: 2%; */
-  /* margin-top: 20%; */
 }
 
 .tweets {
@@ -253,13 +245,8 @@ display: inline;
 }
 
 .tweets-neutral, .tweets-positive, .tweets-negative {
-  /* float: left; */
-  display: inline-block;
-  /* overflow-y: auto; */
-  height: 100%;
   border-radius: 5px;
   border: 1px solid #e1e8ed;
-!opacity: 1
 }
 
 .ct-series-a .ct-bar {
@@ -336,3 +323,139 @@ display: inline;
     left: -50px;
     font-size: 2em;
 }
+
+/*Mark.js settings*/
+mark{
+    background: orange;
+    color: black;
+}
+
+/*Sidebar*/
+@import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
+}
+@import url(http://fonts.googleapis.com/css?family=Titillium+Web:300);
+.fa-2x {
+font-size: 2em;
+}
+.fa {
+position: relative;
+display: table-cell;
+width: 60px;
+height: 36px;
+text-align: center;
+vertical-align: middle;
+font-size:20px;
+}
+
+
+.main-menu:hover,nav.main-menu.expanded {
+width:250px;
+overflow:visible;
+}
+
+.main-menu {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 60px;
+    overflow: hidden;
+    -webkit-transition: width .05s linear;
+    transition: width .05s linear;
+    -webkit-transform: translateZ(0) scale(1,1);
+    z-index: 1000;
+}
+
+.main-menu>ul {
+margin:7px 0;
+}
+
+.main-menu li {
+position:relative;
+display:block;
+width:250px;
+}
+
+.main-menu li>a {
+position:relative;
+display:table;
+border-collapse:collapse;
+border-spacing:0;
+color:#999;
+ font-family: arial;
+font-size: 14px;
+text-decoration:none;
+-webkit-transform:translateZ(0) scale(1,1);
+-webkit-transition:all .1s linear;
+transition:all .1s linear;
+  
+}
+
+.main-menu .nav-icon {
+position:relative;
+display:table-cell;
+width:60px;
+height:36px;
+text-align:center;
+vertical-align:middle;
+font-size:18px;
+}
+
+.main-menu .nav-text {
+position:relative;
+display:table-cell;
+vertical-align:middle;
+width:190px;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.main-menu>ul.logout {
+position:absolute;
+left:0;
+bottom:0;
+}
+
+.no-touch .scrollable.hover {
+overflow-y:hidden;
+}
+
+.no-touch .scrollable.hover:hover {
+overflow-y:auto;
+overflow:visible;
+}
+
+a:hover,a:focus {
+text-decoration:none;
+}
+
+nav {
+-webkit-user-select:none;
+-moz-user-select:none;
+-ms-user-select:none;
+-o-user-select:none;
+user-select:none;
+}
+
+nav ul,nav li {
+outline:0;
+margin:0;
+padding:0;
+}
+.main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
+color:#fff;
+background-color:#5fa2db;
+}
+.area {
+float: left;
+background: #e2e2e2;
+width: 100%;
+}
+
+@font-face {
+  font-family: 'Titillium Web';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
+}
+
+
+

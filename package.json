@@ -25,5 +25,8 @@
     "requirejs": "^2.2.0",
     "twitter-node-client": "0.0.6",
     "unirest": "^0.5.0"
+  },
+  "devDependencies": {
+    "mark.js": "github:julmot/mark.js"
   }
 }
