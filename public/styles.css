@@ -1,4 +1,4 @@
-html, body, .body-container {
+html {
   height: 100%;
 }
 
@@ -17,6 +17,7 @@ body {
   background: url(http://res.cloudinary.com/shino/image/upload/v1471385774/bg_vzqedw.png) no-repeat center center fixed;
   background-size: cover;
   background-attachment: fixed;
+  min-height: 100%;
 }
 
 #bg {
@@ -221,7 +222,7 @@ display: inline;
 }
 
 .positive {
-   background-color: #2ecc71;
+  background-color: #2ecc71;
 }
 
 .negative {
@@ -315,20 +316,14 @@ display: inline;
 .ct-x-axis-label {
     bottom: 0;
     left: 35%;
-    font-size: 2em;
+    font-size: 1.3em;
 }
 
 .ct-y-axis-label {
     transform: rotate(-90deg);
-    top: 50%;
-    left: -50px;
-    font-size: 2em;
-}
-
-/*Mark.js settings*/
-mark{
-    background: orange;
-    color: black;
+    top: 42%;
+    left: -15px;
+    font-size: 1.7em;
 }
 
 /*Sidebar*/
