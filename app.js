@@ -19,7 +19,7 @@ app.use('/public', express.static(__dirname + '/public'));
 app.locals.title = 'Sentiment';
 app.locals.sentimentQueries = [];
 app.locals.tweetArray = [];
-app.locals.count = 500;
+app.locals.count = 10;
 
 // App will perform any functions here before responding to routes.
 // app.all('*', function(req, res, next){
@@ -78,8 +78,6 @@ app.post('/tweets', function(req, res) {
       // Respond to the view only once all of the Tweets have been gathered
       // Otherwise, make additional requests to Twitter
 
-      debugger;
-
       if ((res.app.locals.tweetArray.length + 1) >= res.app.locals.count ) {
         console.log('Tweet Array Length: ' + res.app.locals.tweetArray.length);
         console.log('Count: ' + res.app.locals.count);
@@ -94,7 +92,6 @@ app.post('/tweets', function(req, res) {
       } else {
         console.log('Tweet Array Length: ' + res.app.locals.tweetArray.length);
         console.log('Count: ' + res.app.locals.count);
-              debugger;
 
         // The first request to the twitter API should specify a count.
         // Subsequent requests should utilize max_id and since_id to
@@ -111,12 +108,12 @@ app.post('/tweets', function(req, res) {
           res.app.locals.count = res.app.locals.count - res.app.locals.tweetArray.length;
           console.log("New Count: " + res.app.locals.count);
         }
-        debugger;
+
         // Following Twitter API requests
         twitter.getSearch({"q":queryString, "lang":"en", "count": res.app.locals.count, "max_id": max_id}, error, success);
       };
     };
-    debugger;
+
     // Initial Twitter API request
     twitter.getSearch({"q":queryString, "lang":"en", "count": res.app.locals.count}, error, success);
   }
