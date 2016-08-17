@@ -19,7 +19,7 @@ app.use('/public', express.static(__dirname + '/public'));
 app.locals.title = 'Sentiment';
 app.locals.sentimentQueries = [];
 app.locals.tweetArray = [];
-app.locals.count = 50;
+app.locals.count = 500;
 
 // App will perform any functions here before responding to routes.
 // app.all('*', function(req, res, next){
@@ -34,7 +34,7 @@ app.get('/', function(req, res) {
 
 app.post('/tweets', function(req, res) {
 
-  var queryString = "BACON!";
+  var queryString = "Tesla Model 3";
 
   function getTweets(callback) {
     var error = function (error, response, body) {
@@ -107,7 +107,7 @@ app.post('/tweets', function(req, res) {
         // Twitter will only return Tweets with IDs HIGHER than the value passed for since_id.
         var since_id = res.app.locals.tweetArray.slice(-1)[0].id_str;
 
-        if ((res.app.locals.count - res.app.locals.tweetArray.length) < res.app.locals.count ) {
+        if ((res.app.locals.tweetArray.length + 100) > res.app.locals.count) {
           res.app.locals.count = res.app.locals.count - res.app.locals.tweetArray.length;
           console.log("New Count: " + res.app.locals.count);
         }
