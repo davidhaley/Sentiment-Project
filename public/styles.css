@@ -459,12 +459,6 @@ mark{
     color: #69707a;
 }
 
-/*mark:hover{
-    background: yellow;
-    color: #69707a;
-    font-weight: bold;
-}*/
-
 div.media-content:hover > div > p > mark {
   background: orange;
   color: black;
