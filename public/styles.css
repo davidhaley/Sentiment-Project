@@ -455,7 +455,8 @@ width: 100%;
 }
 
 /*Mark.js settings*/
-mark{
-    background: orange;
-    color: black;
+mark:hover{
+    background: yellow;
+    color: #69707a;
+    font-weight: bold;
 }
