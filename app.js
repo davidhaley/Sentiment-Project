@@ -3,6 +3,7 @@
 // Require the needed modules and create the app variable.
 var requirejs = require('requirejs');
 const express = require('express');
+var bodyParser = require('body-parser')
 const unirest = require('unirest');
 const fs = require('fs');
 const app = express();
@@ -12,14 +13,18 @@ const Twitter = require("twitter-node-client").Twitter;
 const twitter = new Twitter(config);
 var async = require('async');
 
+var jsonParser = bodyParser.json()
+var urlencodedParser = bodyParser.urlencoded({ extended: false })
+
 // Set up the app to serve files in the public folder.
 app.use('/public', express.static(__dirname + '/public'));
+// app.use(express.bodyParser());
 
 // Add local variables that can be used in views and throughout the app.
 app.locals.title = 'Sentiment';
 app.locals.sentimentQueries = [];
 app.locals.tweetArray = [];
-app.locals.count = 10;
+app.locals.count = 30;
 
 // App will perform any functions here before responding to routes.
 // app.all('*', function(req, res, next){
@@ -32,9 +37,10 @@ app.get('/', function(req, res) {
   res.render('main.ejs');
 });
 
-app.post('/tweets', function(req, res) {
+app.post('/tweets', jsonParser, function(req, res) {
+  if (!req.body) return res.sendStatus(400);
 
-  var queryString = "Tesla Model 3";
+  var queryString = req.body.query;
 
   function getTweets(callback) {
     var error = function (error, response, body) {
@@ -131,6 +137,7 @@ app.get('/sentiment', function(req, res) {
 
   var apiDomain = "https://twinword-sentiment-analysis.p.mashape.com/analyze/?text="
   var sentimentArray = [];
+  var queryCounter = 0;
 
   function getSentiment(sentimentQueries, callback) {
     async.reflect(async.mapLimit(sentimentQueries, 10, function(queryObj, callback) {
@@ -141,6 +148,10 @@ app.get('/sentiment', function(req, res) {
       .end(function (result) {
         if (result.status == 200) {
           console.log("Result status 200. Success");
+          queryCounter += 1;
+          debugger;
+          console.log("Queries remaining: ")
+          console.log(sentimentQueries.length - queryCounter);
           var response = [queryObj.id, result.body.type, result.status, result.body.score, queryObj.tweetDate, result.body.keywords];
           callback(null, response);
           return;
