@@ -104,7 +104,14 @@ app.post('/tweets', function(req, res) {
         // Twitter will only return Tweets with IDs HIGHER than the value passed for since_id.
         var since_id = res.app.locals.tweetArray.slice(-1)[0].id_str;
 
-        if ((res.app.locals.tweetArray.length + 100) > res.app.locals.count) {
+        if (res.app.locals.count >= 100) {
+          var pageCount = 100;
+        } else {
+          var pageCount = res.app.locals.count;
+          console.log("Page Count: " + pageCount);
+        };
+
+        if ((res.app.locals.tweetArray.length + pageCount) > res.app.locals.count) {
           res.app.locals.count = res.app.locals.count - res.app.locals.tweetArray.length;
           console.log("New Count: " + res.app.locals.count);
         }
