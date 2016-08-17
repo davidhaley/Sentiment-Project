@@ -5100,7 +5100,7 @@ a.box:active {
   -webkit-flex-grow: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-    position: absolute;
+
 }
 
 .nav-item img {
@@ -5131,7 +5131,6 @@ a.box:active {
 .nav-item a,
 a.nav-item {
   color: #69707a;
-  position: absolute;
 }
 
 .nav-item a:hover,
