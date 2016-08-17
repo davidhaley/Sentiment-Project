@@ -1,6 +1,9 @@
 'use strict';
 
 $(document).ready(function() {
+  $(".search-container").on("submit", function(){
+    return false;
+  });
   $('#load-tweets').keyup(function(event) {
     event.preventDefault();
     console.log("button has been pressed");
