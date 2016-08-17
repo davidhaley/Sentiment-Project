@@ -1,18 +1,18 @@
 <div id="bg">
   <div class="tweet-container columns">
-    <div class="column is-one-quarter">
+    <div class="column">
       <ul class="tweets-positive">
       </ul>
     </div>
-    <div class="column is-one-quarter">
+    <div class="column">
       <ul class="tweets-neutral">
       </ul>
     </div>
-    <div class="column is-one-quarter">
+    <div class="column">
       <ul class="tweets-negative">
       </ul>
     </div>
-    <div class="column is-one-quarter">
+    <div class="column is-one-third">
       <div class="charts">
         <div class="ct-chart ct-series-a ct-bar ct-minor-third" id="bar-chart">
         </div>
@@ -81,10 +81,10 @@
         plugins: [
         Chartist.plugins.axisLabel({
         axisX: {
-        name: 'Tweets'
+        name: ''
         },
         axisY: {
-        name: 'Sentiment Score'
+        name: 'Score'
         }
         })
         ]
