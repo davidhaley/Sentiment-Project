@@ -48,7 +48,7 @@ app.post('/tweets', jsonParser, function(req, res) {
   res.app.locals.queryString = req.body.query;
 
   // Change query count here
-  res.app.locals.count = 3200;
+  res.app.locals.count = 50;
 
   function getTweets(callback) {
     var error = function (error, response, body) {
