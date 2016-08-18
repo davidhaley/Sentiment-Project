@@ -13,6 +13,11 @@ $(document).ready(function() {
     var q = {query: $('#load-tweets').val()};
     var qj = JSON.stringify(q);
 
+    $(document).on({
+      ajaxStart: function() { $('.loading-animation').find('.bird').addClass("loading");   },
+      ajaxStop: function() { $('.loading-animation').find('.bird').removeClass("loading"); }    
+    });
+
     $.ajax({
       type: 'POST',
       url: '/tweets',
@@ -59,6 +64,7 @@ $(document).ready(function() {
           var completeTweet = $(tweetBox).append(mainArticle).append(hr);
           $('.tweets-neutral').append(completeTweet);
         });
+
         $.ajax({
           type: 'GET',
           url: '  /sentiment',
