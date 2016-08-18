@@ -38,18 +38,19 @@ h2 {
 .metrics {
     font-family: montserrat;
 }
-
-#input{
-  border: 1px solid;
-  color: #fff;
-  border-width: 0 0 1px 0;
-  font-size: 2.3em;
-  background: url(https://remoteok.io/assets/search-white.png) no-repeat transparent;
-  background-position: 0% 50%;
-  background-size: 1em;
-  padding-left: 3%;
-  position: fixed;
-  padding-top: 20px;
+#input {
+    color: #fff;
+    display: inline-block;
+    border-width: 0 0 1px 0;
+    padding: 0.5em 1.2em;
+    font-size: 0.7em;
+    background: url(https://remoteok.io/assets/search-white.png) no-repeat transparent;
+    background-position: 2% 50%;
+    background-size: 1em;
+    max-width: 50%;
+    margin-bottom: 4%;
+    text-align: center;
+    margin-left: 5%;
 }
 
 .tweet-container {
@@ -78,8 +79,6 @@ h2 {
     background: url(https://remoteok.io/assets/search-white.png) no-repeat transparent;
     background-position: 2% 50%;
     background-size: 1em;
-    /* margin-top: 3.5%; */
-    /* margin-left: 40%; */
     max-width: 50%;
     margin-bottom: 4%;
     text-align: center;
