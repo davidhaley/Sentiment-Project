@@ -14,7 +14,7 @@ $(document).ready(function() {
     $('.negative-percent').children('.percent').empty();
    
     // Prepare search query
-    var q = {query: $('#load-tweets').val()};
+    var q = {query: $('.load-tweets').val()};
     var qj = JSON.stringify(q);
 
     $(document).on({
