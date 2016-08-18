@@ -187,21 +187,15 @@ $(document).ready(function() {
             var neutralPercent = ((lineChartSeriesNeutral.length / totalCount) * 100).toFixed(0);
             var negativePercent = ((lineChartSeriesNegative.length / totalCount) * 100).toFixed(0);
 
-        
-// Include percent of sentiment and total tweet count above bar chart
-           var totalTweets = $('<li>').addClass('.total').append(totalCount);
-           $('.total-tweets').append(totalTweets);
-           var posPercent = $('<li>').addClass('percent').append(positivePercent);
-           $('.positive-percent').append(posPercent);
-           var neuPercent = $('<li>').addClass('percent').append(neutralPercent);
-           $('.neutral-percent').append(neuPercent);
-           var negPercent = $('<li>').addClass('percent').append(negativePercent);
-           $('.negative-percent').append(negPercent);
-          },
-          error: function(data) {
-            console.log('error');
-            console.log(data);
-          }
+            // Include percent of sentiment and total tweet count above bar chart
+            var totalTweets = $('<li>').addClass('.total').append(totalCount);
+            $('.total-tweets').append(totalTweets);
+            var posPercent = $('<li>').addClass('percent').append(positivePercent);
+            $('.positive-percent').append(posPercent);
+            var neuPercent = $('<li>').addClass('percent').append(neutralPercent);
+            $('.neutral-percent').append(neuPercent);
+            var negPercent = $('<li>').addClass('percent').append(negativePercent);
+            $('.negative-percent').append(negPercent);
         });
       },
       error: function(data) {
