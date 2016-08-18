@@ -196,6 +196,7 @@ $(document).ready(function() {
             $('.neutral-percent').append(neuPercent);
             var negPercent = $('<li>').addClass('percent').append(negativePercent);
             $('.negative-percent').append(negPercent);
+          }
         });
       },
       error: function(data) {
