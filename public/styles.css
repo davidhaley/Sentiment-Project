@@ -4,8 +4,6 @@ html {
 }
 
 .body-container {
-  /* display:flex; */
-  /* flex-direction: column; */
   height: 100%;
   position: relative;
 }
@@ -41,7 +39,7 @@ h2 {
     font-family: montserrat;
 }
 
-#input {
+#input{
   border: 1px solid;
   color: #fff;
   border-width: 0 0 1px 0;
@@ -53,6 +51,7 @@ h2 {
   position: fixed;
   padding-top: 20px;
 }
+
 .tweet-container {
     /* background: rgba(255,255,255, 0.6); */
     margin: 20px;
@@ -69,7 +68,8 @@ h2 {
 #input:focus {
   border-bottom-color: blue;
 }
-#load-tweets {
+
+.load-tweets {
     color: #fff;
     display: inline-block;
     border-width: 0 0 1px 0;
