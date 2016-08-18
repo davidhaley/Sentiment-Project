@@ -1,0 +1,24 @@
+<div id="bg">
+  <div class="column is-half is-offset-3">
+  <blockquote>
+    <h1>SCORE</h1>
+    <p>The score indicates how negative or positive the overall text analyzed is. Anything below a score of -0.05 we tag as negative and anything above 0.05 we tag as positive. Anything in between inclusively, we tag as neutral.</p>
+    <br>
+    <p>Since we have provided the actual scores we used determine the type, you are free to reject our interpretation and interpret the actual scores yourself and create your own negative and positive minimum scores.</p>
+    <h1>RATIO</h1>
+    <p>The ratio is the combined total score of negative words compared to the combined total score of positive words, ranging from -1 to 1. Take the below for example.</p>
+    <br>
+    <p>Let’s say we are analyzing words A, B, C and D.</p>
+    <br>
+    <p>Scenario 1) If words A and B are negative words having a combined total score of -5.0 and words C and D are positive words having a combined total score of 5.0, then the ratio would be 0 (or 1:1) as both sides are balanced.</p>
+    <br>
+    <p>Scenario 2) If negative words have a total combined score of -5.0 while positive words have a total combined score of 2.5, then the ratio would be -0.667 (or 2:1).</p>
+    <br>
+    <p>Scenario 3) If negative words total -5.0 and positive words total 0.0, then the ratio would be -1 (or 1:0).</p>
+    <br>
+    <p>In the end, the score and ratio allows you to go beyond what we think is negative or what we think is positive. In your code, you can consider the impact of the score or the impact of the ratio, or even combine them all to set your own positive and negative thresholds to suit your application.</p>
+    <br>
+    <p>Maybe your users are generally very negative? You can, for example, instead of using our interpretation that less than -0.05 is negative and more than 0.05 is positive, you can write your own algorithm that says below -0.9 is negative and above -0.8 is positive.</p>
+    </blockquote>
+  </div>
+</div>
