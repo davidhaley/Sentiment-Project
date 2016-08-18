@@ -14,8 +14,7 @@ $(document).ready(function() {
     var qj = JSON.stringify(q);
 
     $(document).on({
-      ajaxStart: function() { $('.loading-animation').find('.bird').addClass("loading");   },
-      ajaxStop: function() { $('.loading-animation').find('.bird').removeClass("loading"); }    
+      ajaxStart: function() { $('.loading-animation').find('.bird').addClass("loading"); }
     });
 
     $.ajax({
@@ -63,6 +62,10 @@ $(document).ready(function() {
           var mainArticle = $(article).append(avatar).append(finalTweet);
           var completeTweet = $(tweetBox).append(mainArticle).append(hr);
           $('.tweets-neutral').append(completeTweet);
+        });
+
+        $(document).on({
+          ajaxStop: function() { $('.loading-animation').find('.bird').removeClass("loading"); }    
         });
 
         $.ajax({
