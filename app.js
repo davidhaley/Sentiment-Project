@@ -41,14 +41,13 @@ app.get('/', function(req, res) {
   res.render('main.ejs');
 });
 
-// Routes for pages//
-// app.get('/index.ejs', function(req, res){
-//  res.render('index.ejs');
-// });
+app.get('/index.ejs', function(req, res){
+ res.render('index.ejs');
+});
 
-// app.get('/main.ejs', function(req, res) {
-//  res.render('main.ejs');
-// });
+app.get('/main.ejs', function(req, res) {
+ res.render('main.ejs');
+});
 
 
 app.post('/tweets', jsonParser, function(req, res) {
