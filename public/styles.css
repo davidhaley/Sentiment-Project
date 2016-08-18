@@ -505,15 +505,17 @@ ul.positive-percent {
 /*Loading animation*/
 
 
-svg {
+.bird {
   position: absolute;
   height: 5vh;
   width: 5vh;
   left: 48%;
   top: 15%;
+  visibility: hidden;
 }
 
-svg:hover {
+.loading {
+  visibility: visible;
   animation: obnoxious 700ms infinite linear;
 }
 
