@@ -61,7 +61,7 @@ app.post('/tweets', jsonParser, function(req, res) {
   res.app.locals.queryString = req.body.query;
 
   // Change query count here
-  res.app.locals.count = 100;
+  res.app.locals.count = 20;
 
   function getTweets(callback) {
     var error = function (error, response, body) {
@@ -160,7 +160,6 @@ app.post('/tweets', jsonParser, function(req, res) {
         twitter.getSearch({"q":res.app.locals.queryString, "lang":"en", "count": res.app.locals.count, "max_id": max_id}, error, success);
       };
     };
-    debugger;
     // Initial Twitter API request
     twitter.getSearch({"q":res.app.locals.queryString, "lang":"en", "count": res.app.locals.count}, error, success);
   }
