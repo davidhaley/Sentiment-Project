@@ -57,6 +57,8 @@ app.get('/metrics.ejs', function(req, res) {
 app.post('/tweets', jsonParser, function(req, res) {
   if (!req.body) return res.sendStatus(400);
 
+  res.app.locals.sentimentQueries = [];
+
   // Receive search query from client
   res.app.locals.queryString = req.body.query;
 
@@ -118,8 +120,9 @@ app.post('/tweets', jsonParser, function(req, res) {
       // Respond to the view only once all of the Tweets have been gathered
       // Otherwise, make additional requests to Twitter
 
+      debugger;
       if ((res.app.locals.tweetArray.length + 1) >= res.app.locals.count ) {
-        console.log('Tweet Array Length: ' + res.app.locals.tweetArray.length);
+        console.log('Tweet Array Length Greater Than Count: ' + res.app.locals.tweetArray.length);
         console.log('Count: ' + res.app.locals.count);
         // Show a maximum amount of tweets on the page
         var numberOfTweetsToDisplay = -50;
@@ -129,6 +132,8 @@ app.post('/tweets', jsonParser, function(req, res) {
 
         // Repond to the view
         res.json(response);
+        res.app.locals.tweetArray = [];
+        // debugger;
       } else {
         console.log('Tweet Array Length: ' + res.app.locals.tweetArray.length);
         console.log('Count: ' + res.app.locals.count);
