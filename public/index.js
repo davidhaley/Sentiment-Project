@@ -8,7 +8,11 @@ $(document).ready(function() {
     $('.column').children('.tweets-positive').empty();
     $('.column').children('.tweets-neutral').empty();
     $('.column').children('.tweets-negative').empty();
-    
+    $('.total-tweets').children('.total').empty();
+    $('.positive-percent').children('.percent').empty();
+    $('.neutral-percent').children('.percent').empty();
+    $('.negative-percent').children('.percent').empty();
+   
     // Prepare search query
     var q = {query: $('#load-tweets').val()};
     var qj = JSON.stringify(q);
@@ -197,7 +201,7 @@ $(document).ready(function() {
             var negativePercent = ((lineChartSeriesNegative.length / totalCount) * 100).toFixed(0);
 
             // Include percent of sentiment and total tweet count above bar chart
-            var totalTweets = $('<li>').addClass('.total').append(totalCount);
+            var totalTweets = $('<li>').addClass('total').append(totalCount);
             $('.total-tweets').append(totalTweets);
             var posPercent = $('<li>').addClass('percent').append(positivePercent);
             $('.positive-percent').append(posPercent);
