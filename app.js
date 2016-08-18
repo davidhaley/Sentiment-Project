@@ -49,6 +49,10 @@ app.get('/main.ejs', function(req, res) {
  res.render('main.ejs');
 });
 
+app.get('/metrics.ejs', function(req, res) {
+  res.render('metrics.ejs');
+})
+
 
 app.post('/tweets', jsonParser, function(req, res) {
   if (!req.body) return res.sendStatus(400);
