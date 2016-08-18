@@ -13,6 +13,11 @@ const Twitter = require("twitter-node-client").Twitter;
 const twitter = new Twitter(config);
 var async = require('async');
 
+if ('development' == app.get('env')) {
+    console.log("Threadpool 128");
+    process.env.UV_THREADPOOL_SIZE=128;
+}
+
 // Setup bodyParser to receive requests from client
 var jsonParser = bodyParser.json()
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
@@ -43,7 +48,7 @@ app.post('/tweets', jsonParser, function(req, res) {
   res.app.locals.queryString = req.body.query;
 
   // Change query count here
-  res.app.locals.count = 25;
+  res.app.locals.count = 3200;
 
   function getTweets(callback) {
     var error = function (error, response, body) {
@@ -57,6 +62,19 @@ app.post('/tweets', jsonParser, function(req, res) {
 
     var success = function(data) {
 
+      // Remove emoji icons from Twinword search query, else receive 400 error 'Bad Request'
+      var ranges = [
+        '\ud83c[\udf00-\udfff]', // U+1F300 to U+1F3FF
+        '\ud83d[\udc00-\ude4f]', // U+1F400 to U+1F64F
+        '\ud83d[\ude80-\udeff]',  // U+1F680 to U+1F6FF
+        '[^\x00-\x7F]'
+      ];
+
+      function removeInvalidChars(string) {
+        var string = string.replace(new RegExp(ranges.join('|'), 'g'), '');
+        return string;
+      }
+
       JSON.parse(data).statuses.forEach(function(tweet) {
         // Create query object for TwinWord.
         var queryObj = {};
@@ -65,7 +83,7 @@ app.post('/tweets', jsonParser, function(req, res) {
         queryObj.id = tweet.id_str;
 
         // Build query for TwinWord API.
-        var text = tweet.text;
+        var text = removeInvalidChars(tweet.text);
         var query = text.split(" ").join("+").replace("'","");
         
         // Add API query to query object, to later match with tweet when returned. 
@@ -147,7 +165,10 @@ app.get('/sentiment', function(req, res) {
       var query = queryObj.query;
       unirest.get(apiDomain+query)
       .header("X-Mashape-Key", "kWBJRsZrjmmshQnhz4Fta1chiRRxp1rhKxgjsnUGdwGKSkVFbG")
+      .header("Host: twinword-sentiment-analysis.p.mashape.com")
       .header("Accept", "application/json")
+      .timeout(10000)
+      .forever(true)
       .end(function (result) {
         if (result.status == 200) {
           console.log("Result status 200. Success");
@@ -158,7 +179,8 @@ app.get('/sentiment', function(req, res) {
           callback(null, response);
           return;
         } else {
-          console.log("Result status is " + result);
+          console.log(JSON.stringify(result))
+          console.log("Result status is " + result.error);
           var error = [queryObj.id, result.error]
           callback(error, null);
           return;
