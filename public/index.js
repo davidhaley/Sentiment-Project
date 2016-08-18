@@ -17,6 +17,7 @@ $(document).ready(function() {
     var q = {query: $('.load-tweets').val()};
     var qj = JSON.stringify(q);
 
+    // Begin loading icon when requesting tweets
     $(document).on({
       ajaxStart: function() { $('.loading-animation').find('.bird').addClass("loading"); }
     });
@@ -28,6 +29,7 @@ $(document).ready(function() {
       data: qj,
       dataType: 'JSON',
       success: function(data) {
+
         data.forEach(function(tweet) {
 
           // Grab tweet ID to later match sentiment analysis
@@ -68,6 +70,7 @@ $(document).ready(function() {
           $('.tweets-neutral').append(completeTweet);
         });
 
+        // End loading icon when sentiment is complete
         $(document).on({
           ajaxStop: function() { $('.loading-animation').find('.bird').removeClass("loading"); }    
         });
@@ -175,8 +178,6 @@ $(document).ready(function() {
               ]
             };
 
-            debugger;
-
             // Update line chart options to include tweet count on x-axis
             var lineChartOptions = {
               plugins: [
@@ -205,11 +206,11 @@ $(document).ready(function() {
             // Include percent of sentiment and total tweet count above bar chart
             var totalTweets = $('<li>').addClass('total').append(totalCount);
             $('.total-tweets').append(totalTweets);
-            var posPercent = $('<li>').addClass('percent').append(positivePercent);
+            var posPercent = $('<li>').addClass('percent').append(positivePercent).append('%');
             $('.positive-percent').append(posPercent);
-            var neuPercent = $('<li>').addClass('percent').append(neutralPercent);
+            var neuPercent = $('<li>').addClass('percent').append(neutralPercent).append('%');
             $('.neutral-percent').append(neuPercent);
-            var negPercent = $('<li>').addClass('percent').append(negativePercent);
+            var negPercent = $('<li>').addClass('percent').append(negativePercent).append('%');
             $('.negative-percent').append(negPercent);
           }
         });
