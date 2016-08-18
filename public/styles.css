@@ -31,6 +31,10 @@ body {
   /* height: 100%; */
 }
 
+h2 {
+  font-size: 1.5em;
+}
+
 #input {
   border: 1px solid;
   color: #fff;
@@ -66,11 +70,13 @@ body {
     padding: 0.5em 1.2em;
     font-size: 2.3em;
     background: url(https://remoteok.io/assets/search-white.png) no-repeat transparent;
-    background-position: 0% 50%;
+    background-position: 2% 50%;
     background-size: 1em;
     /* margin-top: 3.5%; */
     /* margin-left: 40%; */
     max-width: 50%;
+    margin-bottom: 4%;
+    text-align: center;
 }
 
 .nav {
@@ -89,9 +95,11 @@ ul.charts {
     border-radius: 5px;
 }
 
-ul{
-  margin:0px;
-  padding:0px;
+ul {
+    margin: 0px;
+    text-align: center;
+    padding-left: 5%;
+    padding-top: 3%;
 }
 
 ul li{
@@ -318,7 +326,7 @@ display: inline;
 */
 .ct-chart {
     position: relative;
-    height: 400px;
+    height: 300px;
 }
 
 .ct-axis-label {
@@ -475,4 +483,66 @@ div.media-content:hover > div > p > mark {
   background: orange;
   color: black;
   font-weight: bold;
+}
+
+.percent {
+    margin-bottom: 10%;
+}
+ul.negative-percent {
+    float: left;
+    padding-left: 12%;
+}
+ul.neutral-percent {
+    float: left;
+    padding-left: 14%;
+}
+ul.positive-percent {
+    float: left;
+    padding-left: 14%;
+}
+
+
+/*Loading animation*/
+
+
+svg {
+  position: absolute;
+  height: 5vh;
+  width: 5vh;
+  left: 48%;
+  top: 15%;
+}
+
+svg:hover {
+  animation: obnoxious 700ms infinite linear;
+}
+
+/*path {
+  fill: inherit;
+}
+*/
+@keyframes obnoxious {
+  0% {
+    fill: #00FFD4;
+  }
+  
+  20% {
+    fill: #00F8FE;
+  }
+  
+  40% {
+    fill: #EDFF00;
+  }
+  
+  60% {
+    fill: #FF072A;
+  }
+  
+  80% {
+    fill: #FF00EE;
+  }
+  
+  100% {
+    fill: #7F08FB;
+  }
 }
