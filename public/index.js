@@ -193,9 +193,9 @@ $(document).ready(function() {
             var posPercent = $('<li>').addClass('percent').append(positivePercent);
             $('.positive-percent').append(posPercent);
             var neuPercent = $('<li>').addClass('percent').append(neutralPercent);
-            $('.positive-percent').append(neuPercent);
+            $('.neutral-percent').append(neuPercent);
             var negPercent = $('<li>').addClass('percent').append(negativePercent);
-            $('.positive-percent').append(negPercent);
+            $('.negative-percent').append(negPercent);
           },
           error: function(data) {
             console.log('error');
