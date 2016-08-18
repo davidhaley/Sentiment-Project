@@ -61,7 +61,7 @@ app.post('/tweets', jsonParser, function(req, res) {
   res.app.locals.queryString = req.body.query;
 
   // Change query count here
-  res.app.locals.count = 50;
+  res.app.locals.count = 200;
 
   function getTweets(callback) {
     var error = function (error, response, body) {
@@ -194,12 +194,17 @@ app.get('/sentiment', function(req, res) {
           console.log(JSON.stringify(result))
           console.log("Result status is " + result.error);
           var error = [queryObj.id, result.error]
-          // callback(error, null);
+          callback(error, null);
           return;
         }
       });
     }, function(err, results) {
+      if (err) {
+        console.log(err);
+        res.status(500).send('The request could not be completed');
+      } else {
       res.json(results);
+    };
     }));
   }
   getSentiment(res.app.locals.sentimentQueries);
