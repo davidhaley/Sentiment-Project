@@ -40,17 +40,15 @@ h2 {
 }
 #input {
     color: #fff;
-    display: inline-block;
+    display: inline;
     border-width: 0 0 1px 0;
     padding: 0.5em 1.2em;
-    font-size: 0.7em;
+    font-size: 2em;
     background: url(https://remoteok.io/assets/search-white.png) no-repeat transparent;
     background-position: 2% 50%;
     background-size: 1em;
     max-width: 50%;
-    margin-bottom: 4%;
     text-align: center;
-    margin-left: 5%;
 }
 
 .tweet-container {
@@ -62,8 +60,10 @@ h2 {
     height: 100%;
 }
 
-.search-container { 
+.search-container {
   text-align: center;
+  position: relative;
+  bottom: 65px;
 }
 
 #input:focus {

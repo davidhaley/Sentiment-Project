@@ -38,7 +38,7 @@ app.set('view engine', 'ejs');
 
 // Landing page
 app.get('/', function(req, res) {
-  res.render('main.ejs');
+  res.render('index.ejs');
 });
 
 app.get('/index.ejs', function(req, res){
