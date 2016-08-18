@@ -2,16 +2,13 @@ html {
   height: 100%;
   position: relative;
 }
-
 .body-container {
   height: 100%;
   position: relative;
 }
-
 main {
   /* flex:1 ; */
 }
-
 body {
   margin: 0;
   padding: 0;
@@ -19,7 +16,6 @@ body {
   background-attachment: fixed;
   min-height: 100%;
 }
-
 #page2 {
   margin: 0;
   padding: 0;
@@ -28,13 +24,9 @@ body {
   background-attachment: fixed;
   min-height: 100%;
 }
-
-
-
 h2 {
   font-size: 1.5em;
 }
-
 .metrics {
     font-family: montserrat;
 }
@@ -43,7 +35,7 @@ h2 {
     display: inline-block;
     border-width: 0 0 1px 0;
     padding: 0.5em 1.2em;
-    font-size: 0.7em;
+    font-size: 2em;
     background: url(https://remoteok.io/assets/search-white.png) no-repeat transparent;
     background-position: 2% 50%;
     background-size: 1em;
@@ -52,7 +44,6 @@ h2 {
     text-align: center;
     margin-left: 5%;
 }
-
 .tweet-container {
     /* background: rgba(255,255,255, 0.6); */
     margin: 20px;
@@ -61,15 +52,12 @@ h2 {
     /* overflow-y: scroll; */
     height: 100%;
 }
-
-.search-container { 
-  text-align: center;
+.search-container {
+    text-align: center;
 }
-
 #input:focus {
   border-bottom-color: blue;
 }
-
 .load-tweets {
     color: #fff;
     display: inline-block;
@@ -83,34 +71,28 @@ h2 {
     margin-bottom: 4%;
     text-align: center;
 }
-
 .nav {
   color: #4B5267;
   padding-top: 10px;
 }
-
 .charts {
     background-color: white;
     border-radius: 5px;
     height: 800px;
 }
-
 ul.charts {
     background-color: white;
     border-radius: 5px;
 }
-
 ul {
     margin: 0px;
     text-align: center;
     padding-left: 5%;
     padding-top: 3%;
 }
-
 ul li{
   list-style:none;
 }
-
 ul li a{
   /* background: #151718; */
   color: #fff;
@@ -121,7 +103,6 @@ ul li a{
   text-align: center;
   text-decoration: none;
 }
-
 #sidebar-btn {
   display:inline-block;
   vertical-align: middle;
@@ -133,27 +114,21 @@ ul li a{
   top:0px;
   left:-60px;
 }
-
 #sidebar-btn span{
   height:2px;
   background: white;
   margin-bottom:5px;
   display:block;
 }
-
 #sidebar-btn span:nth-child(3){
   width:75%;
 }
-
 #sidebar-btn span:nth-child(2){
   width:50%;
 }
-
 .tweets {
   overflow-y: auto;
 }
-
-
 #title {
   font-size: 2em;
   font-family: Montserrat;
@@ -161,7 +136,6 @@ ul li a{
   text-align: center;
   padding-left: 0.5em;
 }
-
 #video-background {
   position: fixed;
   right: 0;
@@ -172,13 +146,10 @@ ul li a{
   height: auto;
   z-index: -1;
 }
-
  #landing {
   padding-top: 25em;
   margin: 0 auto;
 }
-
-
 .typed-cursor{
     opacity: 1;
     -webkit-animation: blink 0.7s infinite;
@@ -200,26 +171,22 @@ ul li a{
     50% { opacity:0; }
     100% { opacity:1; }
 }
-
 .type {
   color: white;
   font-family: 'Montserrat', sans-serif;
   font-size: 3.5em;
 }
-
 #about{
   padding-right: 20px;
   display: inline;
   margin-top: 20%;
 }
-
 .element {
 color: white;
 font-family: 'Montserrat', sans-serif;
 font-size: 2.5em;
 display: inline;
 }
-
 .avatar {
   float: left;
   width: 48px;
@@ -231,126 +198,100 @@ display: inline;
   top: 50%;
   transform: translateY(-50%) translateX(10%);
 }
-
 .avatar-container {
   margin-right: 5%;
   border-radius: 6px;
   padding: 1px 1px 3px 1px;
 }
-
 .neutral {
   background-color: #95a5a6;
 }
-
 .positive {
   background-color: #2ecc71;
 }
-
 .negative {
   background-color: #e74c3c;
   /* margin-right: 5%; */
 }
-
 .tweet-container columns {
   padding: 9px 12px;
 }
-
 .tweet-box {
   margin: 10px;
   /* overflow-y: scroll; */
 }
-
 .tweets-neutral, .tweets-negative, .tweets-positive {
   background-color: white;
 }
-
 .column .is-one-quarter {
   width: 600px;
 }
-
 .tweets-neutral, .tweets-positive, .tweets-negative {
   border-radius: 5px;
   border: 1px solid #e1e8ed;
   height: 800px;
   overflow-y: scroll;
 }
-
 .ct-series-a .ct-bar {
   stroke-width: 10px;
   stroke-linecap: round;
 }
-
 .ct-chart .ct-bar:nth-of-type(3n+1) {
   stroke: #71A28A;
 }
-
 .ct-chart .ct-bar:nth-of-type(3n+2) {
   stroke: #EFB200;
 }
-
 .ct-chart .ct-bar:nth-of-type(3n+3) {
   stroke: #FF6414;
 }
-
 .ct-series-a .ct-line {
   stroke: #71A28A;
   stroke-width: 5px;
 }
-
 .ct-series-b .ct-line {
   stroke: #EFB200;
   stroke-width: 5px;
 }
-
 .ct-series-c .ct-line {
   stroke: #FF6414;
   stroke-width: 5px;
 }
-
 .ct-series-a .ct-point {
   stroke: #71A28A;
   stroke-width: 15px;
 }
-
 .ct-series-b .ct-point {
   stroke: #EFB200;
   stroke-width: 15px;
 }
-
 .ct-series-c .ct-point {
   stroke: #FF6414;
   stroke-width: 15px;
 }
-
 .ct-label.ct-horizontal {
   white-space: nowrap;
 }
-
-
 /*Axis Title
 */
 .ct-chart {
     position: relative;
     height: 300px;
 }
-
 .ct-axis-label {
     position: absolute;
 }
-
 .ct-x-axis-label {
     bottom: 0;
     left: 35%;
     font-size: 1.3em;
 }
-
 .ct-y-axis-label {
     transform: rotate(-90deg);
     top: 42%;
     left: -15px;
     font-size: 1.7em;
 }
-
 /*Sidebar*/
 @import url(//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css);
 }
@@ -367,13 +308,10 @@ text-align: center;
 vertical-align: middle;
 font-size:20px;
 }
-
-
 .main-menu:hover,nav.main-menu.expanded {
 width:250px;
 overflow:visible;
 }
-
 .main-menu {
     position: absolute;
     right: 0;
@@ -385,17 +323,14 @@ overflow:visible;
     -webkit-transform: translateZ(0) scale(1,1);
     z-index: 1000;
 }
-
 .main-menu>ul {
 margin:7px 0;
 }
-
 .main-menu li {
 position:relative;
 display:block;
 width:250px;
 }
-
 .main-menu li>a {
 position:relative;
 display:table;
@@ -409,7 +344,6 @@ text-decoration:none;
 -webkit-transition:all .1s linear;
 transition:all .1s linear;
 }
-
 .main-menu .nav-icon {
 position:relative;
 display:table-cell;
@@ -419,7 +353,6 @@ text-align:center;
 vertical-align:middle;
 font-size:18px;
 }
-
 .main-menu .nav-text {
 position:relative;
 display:table-cell;
@@ -427,26 +360,21 @@ vertical-align:middle;
 width:190px;
   font-family: 'Titillium Web', sans-serif;
 }
-
 .main-menu>ul.logout {
 position:absolute;
 left:0;
 bottom:0;
 }
-
 .no-touch .scrollable.hover {
 overflow-y:hidden;
 }
-
 .no-touch .scrollable.hover:hover {
 overflow-y:auto;
 overflow:visible;
 }
-
 a:hover,a:focus {
 text-decoration:none;
 }
-
 nav {
 -webkit-user-select:none;
 -moz-user-select:none;
@@ -454,42 +382,35 @@ nav {
 -o-user-select:none;
 user-select:none;
 }
-
 nav ul,nav li {
 outline:0;
 margin:0;
 padding:0;
 }
-
 .main-menu li:hover>a,nav.main-menu li.active>a,.dropdown-menu>li>a:hover,.dropdown-menu>li>a:focus,.dropdown-menu>.active>a,.dropdown-menu>.active>a:hover,.dropdown-menu>.active>a:focus,.no-touch .dashboard-page nav.dashboard-menu ul li:hover a,.dashboard-page nav.dashboard-menu ul li.active a {
 color:#fff;
 background-color:#5fa2db;
 }
-
 .area {
 float: left;
 background: #e2e2e2;
 width: 100%;
 }
-
 @font-face {
   font-family: 'Titillium Web';
   font-style: normal;
   font-weight: 300;
   src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
 }
-
 /*Mark.js settings*/
 mark{
     color: #69707a;
 }
-
 div.media-content:hover > div > p > mark {
   background: orange;
   color: black;
   font-weight: bold;
 }
-
 .percent {
     margin-bottom: 10%;
 }
@@ -505,11 +426,7 @@ ul.positive-percent {
     float: left;
     padding-left: 20%;
 }
-
-
 /*Loading animation*/
-
-
 .bird {
   position: absolute;
   height: 5vh;
@@ -518,12 +435,10 @@ ul.positive-percent {
   top: 15%;
   visibility: hidden;
 }
-
 .loading {
   visibility: visible;
   animation: obnoxious 700ms infinite linear;
 }
-
 /*path {
   fill: inherit;
 }
