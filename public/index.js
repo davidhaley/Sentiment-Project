@@ -30,7 +30,11 @@ $(document).ready(function() {
       dataType: 'JSON',
       success: function(data) {
 
+        var tweetCounter = 0;
+
         data.forEach(function(tweet) {
+
+          tweetCounter += 1;
 
           // Grab tweet ID to later match sentiment analysis
           var id = tweet.id_str;
@@ -198,6 +202,7 @@ $(document).ready(function() {
             lineChart.get(0).__chartist__.update(lineChartData, lineChartOptions, true);
 
             // Get percent of sentiment for bar chart
+            debugger;
             var totalCount = (lineChartSeriesPositive.length + lineChartSeriesNeutral.length + lineChartSeriesNegative.length)
             var positivePercent = ((lineChartSeriesPositive.length / totalCount) * 100).toFixed(0);
             var neutralPercent = ((lineChartSeriesNeutral.length / totalCount) * 100).toFixed(0);
@@ -212,6 +217,8 @@ $(document).ready(function() {
             $('.neutral-percent').append(neuPercent);
             var negPercent = $('<li>').addClass('percent').append(negativePercent).append('%');
             $('.negative-percent').append(negPercent);
+            debugger;
+
           }
         });
       },
