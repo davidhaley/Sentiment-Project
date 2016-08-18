@@ -175,6 +175,8 @@ $(document).ready(function() {
               ]
             };
 
+            debugger;
+
             // Update line chart options to include tweet count on x-axis
             var lineChartOptions = {
               plugins: [
